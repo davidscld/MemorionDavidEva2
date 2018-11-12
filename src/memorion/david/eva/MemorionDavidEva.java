@@ -17,6 +17,7 @@ public class MemorionDavidEva {
     public static void main(String[] args) {
         MenuPrincipal menuPrincial = new MenuPrincipal();
         menuPrincial.setVisible(true);
+        System.out.println("HOLAAAAAa");
     }
     
 }
