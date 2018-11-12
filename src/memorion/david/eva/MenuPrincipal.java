@@ -5,18 +5,12 @@
  */
 package memorion.david.eva;
 
+import java.awt.Frame;
+
 /**
  *
  * @author dvdsa
  */
-public class MemorionDavidEva {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        MenuPrincipal menuPrincial = new MenuPrincipal();
-        menuPrincial.setVisible(true);
-    }
+public class MenuPrincipal extends Frame {
     
 }
