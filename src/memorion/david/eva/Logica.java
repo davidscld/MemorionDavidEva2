@@ -5,7 +5,9 @@
  */
 package memorion.david.eva;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,20 +15,20 @@ import java.util.ArrayList;
  */
 public class Logica {
     private ArrayList<Carta> ArrayListCartas = new ArrayList<>();
-    
-    public void abrirFrameNiveles(){
-        VistaMenuDificultad vistaMenuDificultad=new VistaMenuDificultad();
+
+    public void abrirFrameNiveles() {
+        VistaMenuDificultad vistaMenuDificultad = new VistaMenuDificultad();
         vistaMenuDificultad.setVisible(true);
     }
-    
-    public void abrirFrameRankingJugadores(){
-        VistaRankingJugadores vistaRankingJugadores=new VistaRankingJugadores();
+
+    public void abrirFrameRankingJugadores() {
+        VistaRankingJugadores vistaRankingJugadores = new VistaRankingJugadores();
         vistaRankingJugadores.setVisible(true);
     }
 
     public ArrayList<Carta> getArrayListCartas() {
         return ArrayListCartas;
-    }
+}
     
     
 }
