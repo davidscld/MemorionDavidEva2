@@ -7,16 +7,29 @@ package memorion.david.eva;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
  * @author dvdsa
  */
 public class ControladorBotonesVistas implements ActionListener{
-
+    Logica logica=new Logica();
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String opcion=((JButton)ae.getSource()).getText();
+        switch (opcion) {
+            case "Play":
+                logica.abrirFrameNiveles();
+                break;
+            case "Saved":
+                //Primero hay que saber guardar
+                break;
+            case "Score":
+                logica.abrirFrameRankingJugadores();
+                break;
+        }
     }
     
 }

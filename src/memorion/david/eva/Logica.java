@@ -11,4 +11,14 @@ package memorion.david.eva;
  */
 public class Logica {
     
+    
+    public void abrirFrameNiveles(){
+        VistaMenuDificultad vistaMenuDificultad=new VistaMenuDificultad();
+        vistaMenuDificultad.setVisible(true);
+    }
+    
+    public void abrirFrameRankingJugadores(){
+        VistaRankingJugadores vistaRankingJugadores=new VistaRankingJugadores();
+        vistaRankingJugadores.setVisible(true);
+    }
 }

@@ -24,9 +24,9 @@ public class MenuSuperior extends JMenuBar{
     public void crearMenu(){
         controladorMenuSuperior=new ControladorBotonesMenuSuperior();
         //Definimos las opciones del menu
-        JMenuItem nuevaPartida=new JMenuItem("Nueva partida");
-        JMenuItem cargarPartida=new JMenuItem("Cargar partida");
-        JMenuItem guardarPartida=new JMenuItem("Guardar partida");
+        JMenuItem nuevaPartida=new JMenuItem("Play");
+        JMenuItem cargarPartida=new JMenuItem("Load game");
+        JMenuItem guardarPartida=new JMenuItem("Save game");
 
         // se define una barra de menú
         JMenuBar menuBar=new JMenuBar();

@@ -34,7 +34,7 @@ public class VistaMenuDificultad extends JFrame {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
+        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpeg"));
         JLfondo = new JLabel();
         JLfondo.setIcon(IMGimagenFondo);
         JLfondo.setBounds(0, -30, 700, 910);

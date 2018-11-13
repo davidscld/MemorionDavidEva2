@@ -7,16 +7,27 @@ package memorion.david.eva;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JMenuItem;
 
 /**
  *
  * @author dvdsa
  */
 public class ControladorBotonesMenuSuperior implements ActionListener{
-
+    Logica logica=new Logica();
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String opcion=((JMenuItem)ae.getSource()).getText();
+        switch (opcion) {
+            case "Play":
+                logica.abrirFrameNiveles();
+                break;
+            case "Load game": //cargar partida
+                break;
+            case "Save game": //guardar partida
+                break;
+        }
     }
     
 }

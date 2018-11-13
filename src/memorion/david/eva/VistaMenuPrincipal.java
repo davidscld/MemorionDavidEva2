@@ -24,11 +24,13 @@ public class VistaMenuPrincipal extends JFrame {
     private JLabel JLfondo;
     private ImageIcon IMGimagenFondo;
     private MenuSuperior menuSuperior;
+    private ControladorBotonesVistas controladorBotonesVistas;
 
     public VistaMenuPrincipal() {
         configurarBotonoes();
         configurarVentana();
         configuracionMenuSuperior();
+        crearActionJButton();
     }
 
     private void configurarVentana() {
@@ -69,6 +71,13 @@ public class VistaMenuPrincipal extends JFrame {
     public void configuracionMenuSuperior(){
         menuSuperior=new MenuSuperior();
         this.setJMenuBar(menuSuperior);
+    }
+    
+    public void crearActionJButton(){
+        controladorBotonesVistas=new ControladorBotonesVistas();
+        JBjugar.addActionListener(controladorBotonesVistas);
+        JBpGuardadas.addActionListener(controladorBotonesVistas);
+        JBranking.addActionListener(controladorBotonesVistas);
     }
 
 }
