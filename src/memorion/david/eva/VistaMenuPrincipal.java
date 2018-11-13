@@ -23,17 +23,19 @@ public class VistaMenuPrincipal extends JFrame {
     private JButton JBranking, JBjugar, JBpGuardadas;
     private JLabel JLfondo;
     private ImageIcon IMGimagenFondo;
+    private MenuSuperior menuSuperior;
 
     public VistaMenuPrincipal() {
         configurarBotonoes();
         configurarVentana();
+        configuracionMenuSuperior();
     }
 
     private void configurarVentana() {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
+        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpeg"));
         JLfondo = new JLabel();
         JLfondo.setIcon(IMGimagenFondo);
         JLfondo.setBounds(0, -30, 700, 910);
@@ -62,6 +64,11 @@ public class VistaMenuPrincipal extends JFrame {
         JBranking.setFont(f);
         this.add(JBranking);
 
+    }
+    
+    public void configuracionMenuSuperior(){
+        menuSuperior=new MenuSuperior();
+        this.setJMenuBar(menuSuperior);
     }
 
 }

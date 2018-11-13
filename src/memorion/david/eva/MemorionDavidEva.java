@@ -17,7 +17,7 @@ public class MemorionDavidEva {
     public static void main(String[] args) {
         VistaMenuPrincipal menuPrincial = new VistaMenuPrincipal();
         menuPrincial.setVisible(true);
-        System.out.println("eyyy");
+       
        
        
     }
