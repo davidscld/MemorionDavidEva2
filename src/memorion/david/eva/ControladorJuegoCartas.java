@@ -16,6 +16,8 @@ public class ControladorJuegoCartas extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent me) {
+        System.out.println("");
+        
         super.mouseClicked(me); //To change body of generated methods, choose Tools | Templates.
     }
      
