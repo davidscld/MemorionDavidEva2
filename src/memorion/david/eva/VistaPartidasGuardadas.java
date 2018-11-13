@@ -5,10 +5,26 @@
  */
 package memorion.david.eva;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author dvdsa
  */
-public class VistaPartidasGuardadas {
+public class VistaPartidasGuardadas extends JFrame {
+
     
+    public VistaPartidasGuardadas() {
+        configurarVentana();
+        System.out.println("sjndmkcl");
+        
+    }
+    private void configurarVentana() {
+        this.setSize(720, 905);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        
+    }
 }
