@@ -16,10 +16,10 @@ public class MemorionDavidEva {
      */
     public static void main(String[] args) {
         VistaMenuPrincipal menuPrincial = new VistaMenuPrincipal();
-      //  menuPrincial.setVisible(true);
+        menuPrincial.setVisible(true);
        
-        VistaMenuDificultad v = new VistaMenuDificultad();
-        v.setVisible(true);
+       
+       
     }
     
 }
