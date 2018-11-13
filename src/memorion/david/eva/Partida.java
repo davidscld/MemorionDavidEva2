@@ -5,12 +5,10 @@
  */
 package memorion.david.eva;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author dvdsa
  */
-public class VistaJuegoCartas extends JFrame {
+public class Partida {
     
 }

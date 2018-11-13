@@ -19,10 +19,10 @@ import javax.swing.JLabel;
  */
 public class VistaMenuDificultad extends JFrame {
 
-    private JButton JBDifBaja, difMedia, JBDifAlta;
-    private JLabel JLFondo;
-    private Label LTitulo;
-    private ImageIcon IGImagenFondo;
+    private JButton JBdifBaja, JBdifMedia, JBdifAlta;
+    private JLabel JLfondo;
+    private Label LBtitulo;
+    private ImageIcon IMGimagenFondo;
 
     public VistaMenuDificultad() {
        // configurarTitulo();
@@ -34,11 +34,11 @@ public class VistaMenuDificultad extends JFrame {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        IGImagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
-        JLFondo = new JLabel();
-        JLFondo.setIcon(IGImagenFondo);
-        JLFondo.setBounds(0, -30, 700, 910);
-        this.add(JLFondo);
+        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
+        JLfondo = new JLabel();
+        JLfondo.setIcon(IMGimagenFondo);
+        JLfondo.setBounds(0, -30, 700, 910);
+        this.add(JLfondo);
     }
 
     private void configurarBotonoes() {
@@ -48,30 +48,30 @@ public class VistaMenuDificultad extends JFrame {
         Font f = new Font("Cambria", Font.ITALIC, 45);
 
         //BOTON RANKING
-        JBDifBaja = new JButton("Low");
-        JBDifBaja.setBounds(x, 300, ancho, alto);
-        JBDifBaja.setFont(f);
-        this.add(JBDifBaja);
+        JBdifBaja = new JButton("Low");
+        JBdifBaja.setBounds(x, 300, ancho, alto);
+        JBdifBaja.setFont(f);
+        this.add(JBdifBaja);
         //BOTON DE COMENZAR A JUGAR
-        difMedia = new JButton("Medium");
-        difMedia.setBounds(x, 400, ancho, alto);
-        difMedia.setFont(f);
-        this.add(difMedia);
+        JBdifMedia = new JButton("Medium");
+        JBdifMedia.setBounds(x, 400, ancho, alto);
+        JBdifMedia.setFont(f);
+        this.add(JBdifMedia);
 
         //BONTON DE PARTIDAS GUARDADAS
-        JBDifAlta = new JButton("High");
-        JBDifAlta.setBounds(x, 500, ancho, alto);
-        JBDifAlta.setFont(f);
-        this.add(JBDifAlta);
+        JBdifAlta = new JButton("High");
+        JBdifAlta.setBounds(x, 500, ancho, alto);
+        JBdifAlta.setFont(f);
+        this.add(JBdifAlta);
 
     }
 
     private void configurarTitulo() {
         //Crear titulo
-        LTitulo = new Label("Level", Label.CENTER);
-        LTitulo.setFont(new Font("Cambria", Font.ITALIC, 45));
-        LTitulo.setBounds(240, 150, 200, 100);
-        LTitulo.setBackground(null);
-        this.add(LTitulo);
+        LBtitulo = new Label("Level", Label.CENTER);
+        LBtitulo.setFont(new Font("Cambria", Font.ITALIC, 45));
+        LBtitulo.setBounds(240, 150, 200, 100);
+        LBtitulo.setBackground(null);
+        this.add(LBtitulo);
     }
 }

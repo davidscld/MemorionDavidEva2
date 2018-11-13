@@ -18,7 +18,7 @@ public class VistaPartidasGuardadas extends JFrame {
     
     public VistaPartidasGuardadas() {
         configurarVentana();
-        System.out.println("sjndmkcl");
+        
         
     }
     private void configurarVentana() {

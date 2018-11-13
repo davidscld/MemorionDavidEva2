@@ -5,10 +5,22 @@
  */
 package memorion.david.eva;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author dvdsa
  */
-public class VistaRankingJugadores {
-    
+public class VistaRankingJugadores extends JFrame {
+
+    public VistaRankingJugadores() {
+        configurarVentana();
+    }
+
+    private void configurarVentana() {
+        this.setSize(720, 905);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+
+    }
 }

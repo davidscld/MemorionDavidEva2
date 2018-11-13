@@ -20,9 +20,9 @@ import javax.swing.JLabel;
  */
 public class VistaMenuPrincipal extends JFrame {
 
-    private JButton ranking, jugar, pGuardadas;
-    private JLabel fondo;
-    private ImageIcon imagenFondo;
+    private JButton JBranking, JBjugar, JBpGuardadas;
+    private JLabel JLfondo;
+    private ImageIcon IMGimagenFondo;
 
     public VistaMenuPrincipal() {
         configurarBotonoes();
@@ -33,11 +33,11 @@ public class VistaMenuPrincipal extends JFrame {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        imagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
-        fondo = new JLabel();
-        fondo.setIcon(imagenFondo);
-        fondo.setBounds(0, -30, 700, 910);
-        this.add(fondo);
+        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
+        JLfondo = new JLabel();
+        JLfondo.setIcon(IMGimagenFondo);
+        JLfondo.setBounds(0, -30, 700, 910);
+        this.add(JLfondo);
     }
 
     private void configurarBotonoes() {
@@ -46,21 +46,21 @@ public class VistaMenuPrincipal extends JFrame {
         int x =220;
         Font f = new Font("Cambria",Font.ITALIC,45);
         //BOTON DE COMENZAR A JUGAR
-        jugar = new JButton("Play");
-        jugar.setBounds(x, 300, ancho, alto);  
-        jugar.setFont(f);
-        this.add(jugar);
+        JBjugar = new JButton("Play");
+        JBjugar.setBounds(x, 300, ancho, alto);  
+        JBjugar.setFont(f);
+        this.add(JBjugar);
         
         //BONTON DE PARTIDAS GUARDADAS
-        pGuardadas = new JButton("Saved");
-        pGuardadas.setBounds(x, 400, ancho, alto);
-        pGuardadas.setFont(f);
-        this.add(pGuardadas);
+        JBpGuardadas = new JButton("Saved");
+        JBpGuardadas.setBounds(x, 400, ancho, alto);
+        JBpGuardadas.setFont(f);
+        this.add(JBpGuardadas);
         //BOTON RANKING
-        ranking = new JButton("Score");
-        ranking.setBounds(x, 500, ancho, alto);
-        ranking.setFont(f);
-        this.add(ranking);
+        JBranking = new JButton("Score");
+        JBranking.setBounds(x, 500, ancho, alto);
+        JBranking.setFont(f);
+        this.add(JBranking);
 
     }
 
