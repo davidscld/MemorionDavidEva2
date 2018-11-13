@@ -16,11 +16,13 @@ public class Carta extends JLabel {
 
     private String ruta;
     private ImageIcon imagenCarta;
-    private int largo, ancho, n = 0;
-    private static int id;
+    private int largo, ancho, id;
+    private static int n = 0;
     private boolean emparejada;
 
     public Carta(String ruta) {
+        n++;
+        id=n;
         this.ruta = ruta;
         this.largo = 80;
         this.ancho = 60;
@@ -37,7 +39,7 @@ public class Carta extends JLabel {
         return emparejada;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 

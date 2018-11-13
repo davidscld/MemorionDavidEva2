@@ -15,7 +15,7 @@ public class Partida extends JPanel {
 //TIENE QUE RECIBIR EL ARRAYLIST CON LAS CARTAS
 
     private String dificultad;
-
+    private int numeroCartasAncho, numeroCartasLargo;
     public Partida(String dificultad) {
         this.dificultad = dificultad;
         this.setSize(1080, 720);
@@ -25,7 +25,7 @@ public class Partida extends JPanel {
 
     private void calcularDistribucion() {
         if (this.dificultad.equals("facil")) {
-
+            
         } else if (this.dificultad.equals("media")) {
 
         } else {
