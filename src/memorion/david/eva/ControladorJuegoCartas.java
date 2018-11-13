@@ -5,10 +5,18 @@
  */
 package memorion.david.eva;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author dvdsa
  */
-public class ControladorJuegoCartas {
-    
+public class ControladorJuegoCartas extends MouseAdapter {
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        super.mouseClicked(me); //To change body of generated methods, choose Tools | Templates.
+    }
+     
 }

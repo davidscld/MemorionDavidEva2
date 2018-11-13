@@ -5,12 +5,14 @@
  */
 package memorion.david.eva;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dvdsa
  */
 public class Logica {
-    
+    private ArrayList<Carta> ArrayListCartas = new ArrayList<>();
     
     public void abrirFrameNiveles(){
         VistaMenuDificultad vistaMenuDificultad=new VistaMenuDificultad();
@@ -21,4 +23,10 @@ public class Logica {
         VistaRankingJugadores vistaRankingJugadores=new VistaRankingJugadores();
         vistaRankingJugadores.setVisible(true);
     }
+
+    public ArrayList<Carta> getArrayListCartas() {
+        return ArrayListCartas;
+    }
+    
+    
 }
