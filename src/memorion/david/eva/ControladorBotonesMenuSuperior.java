@@ -21,7 +21,7 @@ public class ControladorBotonesMenuSuperior implements ActionListener{
         String opcion=((JMenuItem)ae.getSource()).getText();
         switch (opcion) {
             case "Play":
-                logica.abrirFrameNiveles();
+                logica.abrirVistaMenuDificultad();
                 break;
             case "Load game": //cargar partida
                 break;
