@@ -28,6 +28,7 @@ public class Carta extends JLabel {
         this.largo = 80;
         this.ancho = 60;
         this.emparejada = false;
+        this.levantada=false;
         crearCarta();
 
     }
