@@ -40,6 +40,8 @@ public class ControladorBotonesVistas implements ActionListener {
                 break;
             case "Medium":
                 break;
+            case "AAA":
+                break;
 
         }
     }
