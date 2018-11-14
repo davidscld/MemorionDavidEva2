@@ -5,6 +5,7 @@
  */
 package memorion.david.eva;
 
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -14,14 +15,14 @@ import javax.swing.JLabel;
  */
 public class Carta extends JLabel {
 
-    private String ruta;
+    private URL ruta;
     private ImageIcon imagenCarta;
     private int largo, ancho, id;
     private static int n = 0;
     private boolean emparejada, levantada;
     
 
-    public Carta(String ruta) {
+    public Carta(URL ruta) {
         n++;
         id=n;
         this.ruta = ruta;
@@ -56,7 +57,7 @@ public class Carta extends JLabel {
 
     private void crearCarta() {
         this.setSize(largo, ancho);
-        imagenCarta = new ImageIcon(this.getClass().getResource(this.ruta));
+        imagenCarta = new ImageIcon(ruta);
         this.setIcon(imagenCarta);
     }
 
