@@ -15,27 +15,32 @@ import javax.swing.JPanel;
 public class Partida extends JPanel {
 //TIENE QUE RECIBIR EL ARRAYLIST CON LAS CARTAS
 
-    private String dificultad;
-    private int numeroCartasAncho, numeroCartasLargo;
+    private String dificultad, nombrePartida;
+    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
     private Logica logica;
-
+    private static int n =0;
     public Partida(String dificultad) {
+        n++;
+        numeroDePartida=n;
         logica = new Logica();
         this.dificultad = dificultad;
+        this.nombrePartida = "Partida "+numeroDePartida;
         
         
         this.setSize(1080, 720);
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
+        configurarPanel();
     
     }
 
     private void calcularDistribucion() {
-        if (this.dificultad.equals("facil")) {
+        System.out.println(dificultad);
+        if (this.dificultad.equals("low")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 3;
 
-        } else if (this.dificultad.equals("media")) {
+        } else if (this.dificultad.equals("medium")) {
             this.numeroCartasAncho = 5;
             this.numeroCartasLargo = 2;
         } else {
@@ -46,9 +51,7 @@ public class Partida extends JPanel {
 
     private void configurarPanel() {
         this.setSize(1080, 720);
-        calcularDistribucion();
-        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
-        for (int i = 0; i < logica.getArrayListCartas().size(); i++) {
+        for (int i = 0; i < 6; i++) {
             this.add(logica.getArrayListCartas().get(i));
         }
     }
