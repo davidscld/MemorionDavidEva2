@@ -18,16 +18,17 @@ import javax.swing.JLabel;
  * @author dvdsa
  */
 public class VistaMenuDificultad extends JFrame {
-
+    private MenuSuperior menuSuperior;
     private JButton JBdifBaja, JBdifMedia, JBdifAlta;
     private JLabel JLfondo;
     private Label LBtitulo;
     private ImageIcon IMGimagenFondo;
-
+    private ControladorBotonesVistas controladorBotonesVistas;
     public VistaMenuDificultad() {
        // configurarTitulo();
         configurarBotonoes();
         configurarVentana();
+         configuracionMenuSuperior();
     }
 
     private void configurarVentana() {
@@ -63,7 +64,8 @@ public class VistaMenuDificultad extends JFrame {
         JBdifAlta.setBounds(x, 500, ancho, alto);
         JBdifAlta.setFont(f);
         this.add(JBdifAlta);
-
+        //Metodo que asigna los action
+        crearActionJButton();
     }
 
     private void configurarTitulo() {
@@ -73,5 +75,16 @@ public class VistaMenuDificultad extends JFrame {
         LBtitulo.setBounds(240, 150, 200, 100);
         LBtitulo.setBackground(null);
         this.add(LBtitulo);
+    }
+
+    private void crearActionJButton() {
+        controladorBotonesVistas = new ControladorBotonesVistas();
+        JBdifAlta.addActionListener(controladorBotonesVistas);
+        JBdifMedia.addActionListener(controladorBotonesVistas);
+        JBdifBaja.addActionListener(controladorBotonesVistas);
+    }
+        private void configuracionMenuSuperior(){
+        menuSuperior=new MenuSuperior();
+        this.setJMenuBar(menuSuperior);
     }
 }
