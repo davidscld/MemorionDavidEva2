@@ -36,7 +36,8 @@ public class ControladorBotonesVistas implements ActionListener {
             case "Low":
             case "High":
             case "Medium":
-                logica.abrirPartida();
+               
+                logica.abrirPartida(opcion);
                 break;
 
         }
