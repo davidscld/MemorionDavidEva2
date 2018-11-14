@@ -16,7 +16,8 @@ import javax.swing.JPanel;
 public class Logica {
 
     private ArrayList<Carta> ArrayListCartas = new ArrayList<>();
-
+    private ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
+    
     public void abrirVistaMenuDificultad() {
         VistaMenuDificultad vistaMenuDificultad = new VistaMenuDificultad();
         vistaMenuDificultad.setVisible(true);
@@ -34,6 +35,11 @@ public class Logica {
     public ArrayList<Carta> getArrayListCartas() {
         return ArrayListCartas;
     }
+    
+    public ArrayList<Jugador> getArrayListJugador() {
+        return ArrayListJugador;
+    }
+    
 
     public void crearArrayListDeCartas() {
        Carta carta1 = new Carta(this.getClass().getResource("/assets/Cartas/lazarillo1.jpg"));
