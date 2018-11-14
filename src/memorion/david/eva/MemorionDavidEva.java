@@ -15,9 +15,12 @@ public class MemorionDavidEva {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VistaMenuPrincipal menuPrincial = new VistaMenuPrincipal();
-        menuPrincial.setVisible(true);
-       
+        
+       Logica logica = new Logica();
+       logica.crearArrayListDeCartas();
+       VistaMenuPrincipal menuPrincial = new VistaMenuPrincipal();
+       menuPrincial.setVisible(true);
+        
        
        
     }
