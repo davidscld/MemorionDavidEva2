@@ -26,6 +26,10 @@ public class Logica {
         VistaRankingJugadores vistaRankingJugadores = new VistaRankingJugadores();
         vistaRankingJugadores.setVisible(true);
     }
+    
+    public void abrirPartida(){
+        
+    }
 
     public ArrayList<Carta> getArrayListCartas() {
         return ArrayListCartas;
