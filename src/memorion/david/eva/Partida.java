@@ -27,7 +27,7 @@ public class Partida extends JPanel {
         this.nombrePartida = "Partida "+numeroDePartida;
         
         
-        this.setSize(1080, 720);
+        this.setBounds(400, 200, 200, 300);
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
         configurarPanel();

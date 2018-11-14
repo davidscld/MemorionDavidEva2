@@ -57,7 +57,7 @@ public class Logica {
         Carta carta10 = new Carta(this.getClass().getResource("/assets/lazarillo10.jpg"));
         Carta carta11 = new Carta(this.getClass().getResource("/assets/lazarillo11.jpg"));
         Carta carta12 = new Carta(this.getClass().getResource("/assets/lazarillo12.jpg"));
-        Carta reverso = new Carta(this.getClass().getResource("/assets/reverso.png"));
+       // Carta reverso = new Carta(this.getClass().getResource("/assets/reverso.png"));
         ArrayListCartas.add(carta1);
         ArrayListCartas.add(carta2);
         ArrayListCartas.add(carta3);
@@ -70,7 +70,7 @@ public class Logica {
         ArrayListCartas.add(carta10);
         ArrayListCartas.add(carta11);
         ArrayListCartas.add(carta12);
-        ArrayListCartas.add(reverso);
+      //  ArrayListCartas.add(reverso);
     }
 
 }

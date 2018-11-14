@@ -5,6 +5,7 @@
  */
 package memorion.david.eva;
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 
@@ -18,7 +19,10 @@ public class VistaJuegoCartas  extends JFrame{
 
     public VistaJuegoCartas(Partida partida) {
         this.partida = partida;
-        this.add(partida);
+        this.add(partida); 
+        this.setLayout(new BorderLayout());
+        
+       this.setExtendedState(JFrame.MAXIMIZED_BOTH); //Expande la pantalla al maximo
     }
     
     
