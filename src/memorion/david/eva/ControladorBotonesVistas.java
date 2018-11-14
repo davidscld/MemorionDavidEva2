@@ -13,15 +13,17 @@ import javax.swing.JButton;
  *
  * @author dvdsa
  */
-public class ControladorBotonesVistas implements ActionListener{
-    Logica logica=new Logica();
-    
+public class ControladorBotonesVistas implements ActionListener {
+
+    Logica logica = new Logica();
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String opcion=((JButton)ae.getSource()).getText();
+        String opcion = ((JButton) ae.getSource()).getText();
         switch (opcion) {
+            //Casos de la VistaMenuPrincial
             case "Play":
-                logica.abrirFrameNiveles();
+                logica.abrirVistaMenuDificultad();
                 break;
             case "Saved":
                 //Primero hay que saber guardar
@@ -29,7 +31,17 @@ public class ControladorBotonesVistas implements ActionListener{
             case "Score":
                 logica.abrirFrameRankingJugadores();
                 break;
+                
+                //Casos de la VistaMenuDificultad
+            case "Low":
+                
+                break;
+            case "High":
+                break;
+            case "Medium":
+                break;
+
         }
     }
-    
+
 }
