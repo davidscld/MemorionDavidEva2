@@ -6,7 +6,9 @@ Cada JLabel se añadira al Panel que haya dentro de esta clase
  */
 package memorion.david.eva;
 
+import java.awt.GridLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -18,10 +20,13 @@ public class VistaRankingJugadores extends JFrame {
     private MenuSuperior menuSuperior;
     private Logica logica;
     private JPanel panelCentral;
+    private JLabel nombre, numeroDeMovimientos;
+
     public VistaRankingJugadores() {
         configurarVentana();
         crearListado();
         configuracionMenuSuperior();
+        crearListado();
     }
 
     private void configurarVentana() {
@@ -31,15 +36,26 @@ public class VistaRankingJugadores extends JFrame {
         crearPanelCentral();
 
     }
-    
-    private void configuracionMenuSuperior(){
-        menuSuperior=new MenuSuperior();
+
+    private void configuracionMenuSuperior() {
+        menuSuperior = new MenuSuperior();
         this.setJMenuBar(menuSuperior);
     }
 
     private void crearListado() {
         logica = new Logica();
+        //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO
+        int numeroDeFilas = logica.getArrayListJugador().size();
+        panelCentral.setLayout(new GridLayout(numeroDeFilas, 1));
         
+        //RECORRO EL ARRAYLIST Y A MEDIDA VOY SACANDO NOMBRE Y N.MOVIMIENTOS DEL JUGADOR Y LOS MUESTRO.
+        for (Jugador it : logica.getArrayListJugador()) {
+            nombre = new JLabel(it.getNombre());
+            this.add(nombre);
+            numeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
+            this.add(numeroDeMovimientos);
+        }
+
     }
 
     private void crearPanelCentral() {
