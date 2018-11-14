@@ -68,12 +68,12 @@ public class VistaMenuPrincipal extends JFrame {
 
     }
     
-    public void configuracionMenuSuperior(){
+    private void configuracionMenuSuperior(){
         menuSuperior=new MenuSuperior();
         this.setJMenuBar(menuSuperior);
     }
     
-    public void crearActionJButton(){
+    private void crearActionJButton(){
         controladorBotonesVistas=new ControladorBotonesVistas();
         JBjugar.addActionListener(controladorBotonesVistas);
         JBpGuardadas.addActionListener(controladorBotonesVistas);
