@@ -13,8 +13,11 @@ import javax.swing.JFrame;
  */
 public class VistaRankingJugadores extends JFrame {
 
+    private MenuSuperior menuSuperior;
+    
     public VistaRankingJugadores() {
         configurarVentana();
+        configuracionMenuSuperior();
     }
 
     private void configurarVentana() {
@@ -22,5 +25,10 @@ public class VistaRankingJugadores extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
 
+    }
+    
+    private void configuracionMenuSuperior(){
+        menuSuperior=new MenuSuperior();
+        this.setJMenuBar(menuSuperior);
     }
 }

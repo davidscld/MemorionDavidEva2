@@ -28,7 +28,7 @@ public class VistaMenuDificultad extends JFrame {
        // configurarTitulo();
         configurarBotonoes();
         configurarVentana();
-         configuracionMenuSuperior();
+        configuracionMenuSuperior();
     }
 
     private void configurarVentana() {
@@ -83,7 +83,7 @@ public class VistaMenuDificultad extends JFrame {
         JBdifMedia.addActionListener(controladorBotonesVistas);
         JBdifBaja.addActionListener(controladorBotonesVistas);
     }
-        private void configuracionMenuSuperior(){
+    private void configuracionMenuSuperior(){
         menuSuperior=new MenuSuperior();
         this.setJMenuBar(menuSuperior);
     }

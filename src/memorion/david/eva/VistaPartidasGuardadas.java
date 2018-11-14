@@ -14,17 +14,25 @@ import javax.swing.JLabel;
  * @author dvdsa
  */
 public class VistaPartidasGuardadas extends JFrame {
-
+    
+    private MenuSuperior menuSuperior;
     
     public VistaPartidasGuardadas() {
         configurarVentana();
+        configuracionMenuSuperior();
         
         
     }
+    
     private void configurarVentana() {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         
+    }
+    
+    private void configuracionMenuSuperior(){
+        menuSuperior=new MenuSuperior();
+        this.setJMenuBar(menuSuperior);
     }
 }
