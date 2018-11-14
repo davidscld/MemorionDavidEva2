@@ -44,16 +44,22 @@ public class VistaRankingJugadores extends JFrame {
 
     private void crearListado() {
         logica = new Logica();
-        //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO
-        int numeroDeFilas = logica.getArrayListJugador().size();
-        panelCentral.setLayout(new GridLayout(numeroDeFilas, 1));
-        
-        //RECORRO EL ARRAYLIST Y A MEDIDA VOY SACANDO NOMBRE Y N.MOVIMIENTOS DEL JUGADOR Y LOS MUESTRO.
-        for (Jugador it : logica.getArrayListJugador()) {
-            nombre = new JLabel(it.getNombre());
-            this.add(nombre);
-            numeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
-            this.add(numeroDeMovimientos);
+
+        if (logica.getArrayListJugador().isEmpty()) {
+            //NO MUESTRA NADA
+        } else {
+
+            //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO
+            int numeroDeFilas = logica.getArrayListJugador().size();
+            panelCentral.setLayout(new GridLayout(numeroDeFilas, 1));
+
+            //RECORRO EL ARRAYLIST Y A MEDIDA VOY SACANDO NOMBRE Y N.MOVIMIENTOS DEL JUGADOR Y LOS MUESTRO.
+            for (Jugador it : logica.getArrayListJugador()) {
+                nombre = new JLabel(it.getNombre());
+                this.add(nombre);
+                numeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
+                this.add(numeroDeMovimientos);
+            }
         }
 
     }
