@@ -17,7 +17,7 @@ public class Jugador {
         this.nombre = nombre;
         this.numeroMovimientos = numeroMovimientos;
         this.tiempoUsado = tiempoUsado;
-        System.out.println("asd");
+        
     }
 
     public String getNombre() {

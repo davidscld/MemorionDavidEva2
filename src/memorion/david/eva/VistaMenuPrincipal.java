@@ -31,6 +31,7 @@ public class VistaMenuPrincipal extends JFrame {
         configurarVentana();
         configuracionMenuSuperior();
         crearActionJButton();
+       
     }
 
     private void configurarVentana() {
@@ -45,6 +46,7 @@ public class VistaMenuPrincipal extends JFrame {
     }
 
     private void configurarBotonoes() {
+        
         int alto= 60;
         int ancho = 250;
         int x =220;
