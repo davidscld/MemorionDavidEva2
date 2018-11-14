@@ -37,7 +37,7 @@ public class VistaMenuPrincipal extends JFrame {
         this.setSize(720, 905);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpeg"));
+        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
         JLfondo = new JLabel();
         JLfondo.setIcon(IMGimagenFondo);
         JLfondo.setBounds(0, -30, 700, 910);
