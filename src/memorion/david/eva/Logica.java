@@ -16,35 +16,39 @@ import javax.swing.ImageIcon;
 public class Logica {
 
     private Vista vista;
+    private VistaMenuPrincipal vistaMenuPrincipal;
 
     private static ArrayList<Carta> ArrayListCartas = new ArrayList<>();
     private static ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
     private ImageIcon imagenCartaAnverso;
 
-    public Logica(Vista vista) {
-        this.vista = vista;
+    public Logica() {
+        crearArrayListDeCartas();
+        vistaMenuPrincipal=new VistaMenuPrincipal(this);
+        vista=new Vista(vistaMenuPrincipal);
+        vista.setVisible(true);
+        
+    }
+    
+    public void abrirVistaPrincipal(){
+        vista.crearPanel(vistaMenuPrincipal);
     }
 
     public void abrirVistaMenuDificultad() {
-
-        vista.removeAll();
         VistaMenuDificultad vistaMenuDificultad = new VistaMenuDificultad(this);
-        vista.add(vistaMenuDificultad);
-    
-
-        //vista.crearPanel(vistaMenuDificultad);
+        vista.crearPanel(vistaMenuDificultad);
     }
 
     public void abrirFrameRankingJugadores() {
         VistaRankingJugadores vistaRankingJugadores = new VistaRankingJugadores(this);
-        vistaRankingJugadores.setVisible(true);
+        vista.crearPanel(vistaRankingJugadores);
     }
 
     public void abrirPartida(String dificultad) {
 
         Partida partida = new Partida(dificultad, this);
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
-        vistaJuegoCartas.setVisible(true);
+        vista.crearPanel(vistaJuegoCartas);
     }
 
     public ArrayList<Carta> getArrayListCartas() {
