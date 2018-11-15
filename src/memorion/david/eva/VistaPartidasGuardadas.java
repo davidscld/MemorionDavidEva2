@@ -15,11 +15,11 @@ import javax.swing.JLabel;
  */
 public class VistaPartidasGuardadas extends JFrame {
     
-    private MenuSuperior menuSuperior;
+    
     
     public VistaPartidasGuardadas() {
         configurarVentana();
-        configuracionMenuSuperior();
+        
         
         
     }
@@ -31,8 +31,4 @@ public class VistaPartidasGuardadas extends JFrame {
         
     }
     
-    private void configuracionMenuSuperior(){
-        menuSuperior=new MenuSuperior();
-        this.setJMenuBar(menuSuperior);
-    }
 }

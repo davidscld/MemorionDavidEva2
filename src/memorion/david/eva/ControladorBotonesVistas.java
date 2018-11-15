@@ -14,8 +14,12 @@ import javax.swing.JButton;
  * @author dvdsa
  */
 public class ControladorBotonesVistas implements ActionListener {
+Logica logica;
+    public ControladorBotonesVistas(Logica logica) {
+        this.logica = logica;
+    }
 
-    Logica logica = new Logica();
+  
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -36,7 +40,7 @@ public class ControladorBotonesVistas implements ActionListener {
             case "Low":
             case "High":
             case "Medium":
-               
+                logica.Barajar();
                 logica.abrirPartida(opcion);
                 break;
 

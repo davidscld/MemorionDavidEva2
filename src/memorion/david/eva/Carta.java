@@ -15,23 +15,22 @@ import javax.swing.JLabel;
  */
 public class Carta extends JLabel {
 
-    private URL ruta;
+    private URL rutaAnverso, rutaReverso;
     private ImageIcon imagenCarta;
-    private int largo, ancho, id;
+    private int id;
     private static int n = 0;
     private boolean emparejada, levantada;
-    
+    private ControladorJuegoCartas controladorJuegoCartas;
 
-    public Carta(URL ruta) {
+    public Carta(URL rutaAnverso) {
         n++;
-        id=n;
-        this.ruta = ruta;
-        this.largo = 80;
-        this.ancho = 60;
-        this.emparejada = false;
-        this.levantada=false;
-        crearCarta();
+        id = n;
+        this.rutaAnverso = rutaAnverso;
 
+        this.emparejada = false;
+        this.levantada = false;
+
+        asignarControlador();
     }
 
     public void setEmparejada(boolean emparejada) {
@@ -53,11 +52,20 @@ public class Carta extends JLabel {
     public void setLevantada(boolean levantada) {
         this.levantada = levantada;
     }
-    
 
-    private void crearCarta() {
-        this.setSize(largo, ancho);
-        imagenCarta = new ImageIcon(ruta);
+    public URL getRutaAnverso() {
+        return rutaAnverso;
+    }
+
+    private void asignarControlador() {
+        controladorJuegoCartas = new ControladorJuegoCartas();
+        this.addMouseListener(controladorJuegoCartas);
+
+    }
+
+    public void ponerRerverso() {
+        this.rutaReverso = this.getClass().getResource("/assets/reverso.jpg");
+        imagenCarta = new ImageIcon(rutaReverso);
         this.setIcon(imagenCarta);
     }
 

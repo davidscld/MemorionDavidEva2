@@ -15,13 +15,13 @@ import javax.swing.JMenuItem;
  * @author dvdsa
  */
 public class ControladorBotonesMenuSuperior implements ActionListener{
-    Logica logica=new Logica();
+ 
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion=((JMenuItem)ae.getSource()).getText();
         switch (opcion) {
             case "Play":
-                logica.abrirVistaMenuDificultad();
+              //  logica.abrirVistaMenuDificultad();
                 break;
             case "Load game": //cargar partida
                 break;

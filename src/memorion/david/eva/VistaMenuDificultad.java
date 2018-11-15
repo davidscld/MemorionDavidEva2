@@ -12,33 +12,38 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author dvdsa
  */
-public class VistaMenuDificultad extends JFrame {
+public class VistaMenuDificultad extends JPanel {
     private MenuSuperior menuSuperior;
     private JButton JBdifBaja, JBdifMedia, JBdifAlta;
     private JLabel JLfondo;
     private Label LBtitulo;
     private ImageIcon IMGimagenFondo;
     private ControladorBotonesVistas controladorBotonesVistas;
-    public VistaMenuDificultad() {
+    private Logica logica;
+    
+    
+    public VistaMenuDificultad(Logica logica) {
        // configurarTitulo();
+        System.out.println("ENTRO");
         configurarBotonoes();
         configurarVentana();
-        configuracionMenuSuperior();
+        this.logica = logica;
     }
 
     private void configurarVentana() {
-        this.setSize(720, 905);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(720, 925);
+        
         this.setLayout(null);
         IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
         JLfondo = new JLabel();
         JLfondo.setIcon(IMGimagenFondo);
-        JLfondo.setBounds(0, -30, 700, 910);
+        JLfondo.setBounds(0, -30, 700, 900);
         this.add(JLfondo);
     }
 
@@ -78,13 +83,10 @@ public class VistaMenuDificultad extends JFrame {
     }
 
     private void crearActionJButton() {
-        controladorBotonesVistas = new ControladorBotonesVistas();
+        controladorBotonesVistas = new ControladorBotonesVistas(logica);
         JBdifAlta.addActionListener(controladorBotonesVistas);
         JBdifMedia.addActionListener(controladorBotonesVistas);
         JBdifBaja.addActionListener(controladorBotonesVistas);
     }
-    private void configuracionMenuSuperior(){
-        menuSuperior=new MenuSuperior();
-        this.setJMenuBar(menuSuperior);
-    }
+
 }

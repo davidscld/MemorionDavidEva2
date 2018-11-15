@@ -15,35 +15,29 @@ import javax.swing.JPanel;
  *
  * @author dvdsa
  */
-public class VistaRankingJugadores extends JFrame {
+public class VistaRankingJugadores extends JPanel {
 
-    private MenuSuperior menuSuperior;
     private Logica logica;
+
     private JPanel panelCentral;
     private JLabel nombre, numeroDeMovimientos;
 
-    public VistaRankingJugadores() {
+    public VistaRankingJugadores(Logica logica) {
         configurarVentana();
         crearListado();
-        configuracionMenuSuperior();
+        this.logica = logica;
         crearListado();
     }
 
     private void configurarVentana() {
         this.setSize(720, 905);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.setLayout(null);
         crearPanelCentral();
 
     }
 
-    private void configuracionMenuSuperior() {
-        menuSuperior = new MenuSuperior();
-        this.setJMenuBar(menuSuperior);
-    }
-
     private void crearListado() {
-        logica = new Logica();
 
         if (logica.getArrayListJugador().isEmpty()) {
             //NO MUESTRA NADA

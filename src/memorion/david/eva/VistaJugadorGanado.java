@@ -9,13 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
  *
  * @author dvdsa
  */
-public class VistaJugadorGanado extends JFrame {
+public class VistaJugadorGanado extends JPanel {
     private ControladorBotonesVistas controladorBotonesVistas;
     private ImageIcon IMGimagenFondo;
     private JLabel JLfondo;
@@ -30,7 +31,6 @@ public class VistaJugadorGanado extends JFrame {
 
     private void configurarVentana() {
         this.setSize(720, 905);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/Fondo/portadaLazarillo.jpg"));
         JLfondo = new JLabel();
@@ -45,7 +45,7 @@ public class VistaJugadorGanado extends JFrame {
         this.add(JTnombre);
         JBenviar = new JButton("Submit");
         JBenviar.setBounds(250, 400, 200, 50);
-        controladorBotonesVistas = new ControladorBotonesVistas();
+        //controladorBotonesVistas = new ControladorBotonesVistas();
         JBenviar.addActionListener(controladorBotonesVistas);
         this.add(JBenviar);
         //Cuando pulse necesito recoger de la partida el numero de pulsaciones y el tiempo, juntarlo con el nombre que recojo y crear objeto de la clase jugador

@@ -13,49 +13,49 @@ import javax.swing.JPanel;
  * @author dvdsa
  */
 public class Partida extends JPanel {
-//TIENE QUE RECIBIR EL ARRAYLIST CON LAS CARTAS
 
     private String dificultad, nombrePartida;
-    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
+    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeCartasUsadas[];
+
+    private static int n = 0;
     private Logica logica;
-    private static int n =0;
-    public Partida(String dificultad) {
+    public Partida(String dificultad, Logica logica) {
         n++;
-        numeroDePartida=n;
-        logica = new Logica();
+        numeroDePartida = n;
+        this.logica= logica;
         this.dificultad = dificultad;
-        this.nombrePartida = "Partida "+numeroDePartida;
-        
-        
-        this.setBounds(400, 200, 200, 300);
+        this.nombrePartida = "Partida " + numeroDePartida;
+
+        this.setBounds(500, 100, 600, 800);
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
         configurarPanel();
-    
+
     }
 
     private void calcularDistribucion() {
-        System.out.println(dificultad);
-        if (this.dificultad.equals("low")) {
-            this.numeroCartasAncho = 2;
-            this.numeroCartasLargo = 3;
 
-        } else if (this.dificultad.equals("medium")) {
-            this.numeroCartasAncho = 5;
+        if (this.dificultad.equals("Low")) {
+            this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
+            numeroDeCartasUsadas = new int[]{0, 1, 2, 0, 1, 2};
+            
+        } else if (this.dificultad.equals("Medium")) {
+            this.numeroCartasAncho = 2;
+            this.numeroCartasLargo = 5;
+            numeroDeCartasUsadas = new int[]{0, 1, 2, 3, 4, 0, 1, 2, 3, 4};
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
+            numeroDeCartasUsadas = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
         }
     }
 
     private void configurarPanel() {
-        this.setSize(1080, 720);
-        for (int i = 0; i < 6; i++) {
-            this.add(logica.getArrayListCartas().get(i));
+        
+        for (int i = 0; i < (numeroCartasAncho * numeroCartasLargo); i++) {
+            this.add(logica.getArrayListCartas().get(i));//Aqui añado la cartas con el reverso
         }
     }
 
 }
-
-

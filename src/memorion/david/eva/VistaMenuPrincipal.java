@@ -12,31 +12,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * a
  *
  * @author dvdsa
  */
-public class VistaMenuPrincipal extends JFrame {
+public class VistaMenuPrincipal extends JPanel {
 
     private JButton JBranking, JBjugar, JBpGuardadas;
     private JLabel JLfondo;
     private ImageIcon IMGimagenFondo;
-    private MenuSuperior menuSuperior;
     private ControladorBotonesVistas controladorBotonesVistas;
-
-    public VistaMenuPrincipal() {
+    private Logica logica;
+    public VistaMenuPrincipal(Logica logica) {
+        this.logica = logica;
         configurarBotonoes();
-        configurarVentana();
-        configuracionMenuSuperior();
+        configurarVentana();  
         crearActionJButton();
        
     }
 
     private void configurarVentana() {
         this.setSize(720, 905);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
         JLfondo = new JLabel();
@@ -70,13 +69,10 @@ public class VistaMenuPrincipal extends JFrame {
 
     }
     
-    private void configuracionMenuSuperior(){
-        menuSuperior=new MenuSuperior();
-        this.setJMenuBar(menuSuperior);
-    }
+
     
     private void crearActionJButton(){
-        controladorBotonesVistas=new ControladorBotonesVistas();
+        controladorBotonesVistas=new ControladorBotonesVistas(logica);
         JBjugar.addActionListener(controladorBotonesVistas);
         JBpGuardadas.addActionListener(controladorBotonesVistas);
         JBranking.addActionListener(controladorBotonesVistas);

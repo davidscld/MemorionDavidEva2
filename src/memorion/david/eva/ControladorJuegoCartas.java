@@ -14,11 +14,15 @@ import java.awt.event.MouseEvent;
  */
 public class ControladorJuegoCartas extends MouseAdapter {
 
+    private Logica logica;
+
+    public ControladorJuegoCartas() {
+  
+    }
+
     @Override
     public void mouseClicked(MouseEvent me) {
-        System.out.println("");
-        
-        super.mouseClicked(me); //To change body of generated methods, choose Tools | Templates.
+        logica.voltearCarta((Carta)me.getSource());
     }
-     
+
 }
