@@ -189,4 +189,9 @@ public class Logica {
         
         //abrirPartidaEmpezada(vistaJuegoCartas);
     }
+
+    public ArrayList<Partida> getArrayPartidasGuardadas() {
+        return ArrayPartidasGuardadas;
+    }
+    
 }
