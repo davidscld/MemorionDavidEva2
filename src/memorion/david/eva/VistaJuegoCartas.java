@@ -23,6 +23,7 @@ public class VistaJuegoCartas extends JPanel {
         this.partida = partida;
         this.add(partida);
         this.setLayout(new BorderLayout());
+        this.setSize(700, 925);
 
        
     }

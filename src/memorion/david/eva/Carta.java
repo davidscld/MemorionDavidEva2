@@ -27,7 +27,6 @@ public class Carta extends JLabel {
         n++;
         id = n;
         this.rutaAnverso = rutaAnverso;
-
         this.emparejada = false;
         this.levantada = false;
         this.logica=logica;

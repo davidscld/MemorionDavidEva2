@@ -20,6 +20,7 @@ public class Vista extends JFrame {
     
     public Vista(JPanel panel1,Logica logica) {
         configuracionMenuSuperior();
+        this.setSize(700, 925);
         this.panel=panel1;
         this.add(panel);
         this.logica=logica;

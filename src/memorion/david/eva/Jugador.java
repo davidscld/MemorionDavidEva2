@@ -28,6 +28,7 @@ public class Jugador {
         return numeroMovimientos;
     }
 
+    
     public int getTiempoUsado() {
         return tiempoUsado;
     }
