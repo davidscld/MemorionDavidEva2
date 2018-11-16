@@ -27,4 +27,8 @@ public class ControladorJuegoCartas extends MouseAdapter {
         System.out.println("Veces "+numeroVecesPulsado);
     }
 
+    public static int getNumeroVecesPulsado() {
+        return numeroVecesPulsado;
+    }
+
 }

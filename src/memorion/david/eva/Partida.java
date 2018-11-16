@@ -21,7 +21,7 @@ public class Partida extends JPanel {
 
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
-    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeCartasUsadas[];
+    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;

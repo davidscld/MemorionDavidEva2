@@ -20,11 +20,10 @@ public class MenuSuperior extends JMenuBar{
     public MenuSuperior(Logica logica) {
         this.logica=logica;
         crearMenu();
-        
     }
     
     public void crearMenu(){
-        controladorMenuSuperior=new ControladorBotonesMenuSuperior(logica);
+        controladorMenuSuperior=new ControladorBotonesMenuSuperior(this.logica);
         //Definimos las opciones del menu
         JMenuItem inicio=new JMenuItem("Inicio");
         JMenuItem nuevaPartida=new JMenuItem("Play");
