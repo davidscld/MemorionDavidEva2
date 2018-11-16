@@ -392,4 +392,9 @@ public class Logica {
     public void huevoDePascua() {
 
     }
+
+    public ArrayList<Partida> getArrayPartidasGuardadas() {
+        return ArrayPartidasGuardadas;
+    }
+    
 }
