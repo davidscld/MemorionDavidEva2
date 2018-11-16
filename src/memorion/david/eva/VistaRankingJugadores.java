@@ -23,9 +23,9 @@ public class VistaRankingJugadores extends JPanel {
     private JLabel nombre, numeroDeMovimientos;
 
     public VistaRankingJugadores(Logica logica) {
+        this.logica = logica;
         configurarVentana();
         crearListado();
-        this.logica = logica;
         crearListado();
     }
 
@@ -40,7 +40,7 @@ public class VistaRankingJugadores extends JPanel {
     private void crearListado() {
 
         if (logica.getArrayListJugador().isEmpty()) {
-            //NO MUESTRA NADA
+            System.out.println("VACIO");
         } else {
 
             //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO

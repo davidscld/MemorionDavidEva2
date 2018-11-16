@@ -8,16 +8,18 @@ package memorion.david.eva;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author dvdsa
  */
-public class VistaPartidasGuardadas extends JFrame {
+public class VistaPartidasGuardadas extends JPanel {
+    private Logica logica;
     
     
-    
-    public VistaPartidasGuardadas() {
+    public VistaPartidasGuardadas(Logica logica) {
+        this.logica=logica;
         configurarVentana();
         
         
@@ -26,7 +28,7 @@ public class VistaPartidasGuardadas extends JFrame {
     
     private void configurarVentana() {
         this.setSize(720, 905);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
         this.setLayout(null);
         
     }

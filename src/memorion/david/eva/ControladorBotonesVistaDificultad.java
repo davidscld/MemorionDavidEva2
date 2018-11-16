@@ -28,15 +28,15 @@ public class ControladorBotonesVistaDificultad implements ActionListener{
         switch (opcion) {
             case "Low":
                 logica.barajar();
-                logica.abrirPartida(opcion);
+                logica.abrirPartidaNueva(opcion);
                 break;
             case "High":
                 logica.barajar();
-                logica.abrirPartida(opcion);
+                logica.abrirPartidaNueva(opcion);
                 break;
             case "Medium": 
                 logica.barajar();
-                logica.abrirPartida(opcion);
+                logica.abrirPartidaNueva(opcion);
                 break;
 
         }    

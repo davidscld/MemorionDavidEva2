@@ -24,7 +24,7 @@ public class ControladorJuegoCartas extends MouseAdapter {
     public void mouseClicked(MouseEvent me) {
         numeroVecesPulsado++;
         logica.voltearCarta((Carta)me.getSource());
-        System.out.println("Veces "+numeroVecesPulsado);
+       
     }
 
     public static int getNumeroVecesPulsado() {

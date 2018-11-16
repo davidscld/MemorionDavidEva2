@@ -29,8 +29,7 @@ public class VistaMenuDificultad extends JPanel {
     
     
     public VistaMenuDificultad(Logica logica) {
-       // configurarTitulo();
-        System.out.println("ENTRO");
+
         this.logica = logica;
         configurarBotonoes();
         configurarVentana();

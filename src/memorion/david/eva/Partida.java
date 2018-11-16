@@ -25,18 +25,18 @@ public class Partida extends JPanel {
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
-    private int tiempoUsado=0;
+    private int tiempoUsado = 0;
 
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
         this.logica = logica;
+        this.setOpaque(false);
         this.dificultad = dificultad;
         this.nombrePartida = "Partida " + numeroDePartida;
-        this.setBackground(Color.yellow);
         this.setBounds(200, 100, 800, 600);
         calcularDistribucion();
-        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
+        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 20, 20));
         configurarPanel();
 
     }
@@ -46,13 +46,17 @@ public class Partida extends JPanel {
         if (this.dificultad.equals("Low")) {
             this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
+            this.setBounds(650, 100, 900, 800);
 
         } else if (this.dificultad.equals("Medium")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 5;
+            this.setBounds(500, 50 , 900, 800);
+
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
+            this.setBounds(500, 50, 1000, 800);
 
         }
     }
@@ -70,7 +74,7 @@ public class Partida extends JPanel {
                 }
             }
         }
-       
+
         Collections.shuffle(cartasSeleccionadas);
         for (Carta it : cartasSeleccionadas) {
             this.add(it);

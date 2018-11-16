@@ -31,10 +31,10 @@ Logica logica;
                 logica.abrirVistaMenuDificultad();
                 break;
             case "Saved":
-                //Primero hay que saber guardar
+                logica.abrirVistaPartidasGuardadas();
                 break;
             case "Score":
-                logica.abrirFrameRankingJugadores();
+                logica.abrirVistaRankingJugadores();
                 break;
                 
                 //Casos de la VistaMenuDificultad
@@ -42,7 +42,7 @@ Logica logica;
             case "High":
             case "Medium": 
                 logica.barajar();
-                logica.abrirPartida(opcion);
+                logica.abrirPartidaNueva(opcion);
                 break;
 
         }

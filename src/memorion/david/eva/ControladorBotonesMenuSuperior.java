@@ -35,6 +35,7 @@ public class ControladorBotonesMenuSuperior implements ActionListener{
                 logica.abrirVistaMenuDificultad();
                 break;
             case "Load game": //cargar partida
+                logica.abrirVistaPartidasGuardadas();
                 break;
             case "Save game": //guardar partida
                 break;

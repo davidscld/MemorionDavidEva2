@@ -25,6 +25,8 @@ public class Logica {
     private static ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
 
     private static ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
+    private ArrayList<Partida> ArrayPartidasGuardadas = new ArrayList<>();
+
     private ImageIcon imagenCartaAnverso;
 
     public Logica() {
@@ -33,30 +35,47 @@ public class Logica {
         vistaMenuPrincipal = new VistaMenuPrincipal(this);
         vista = new Vista(vistaMenuPrincipal, this);
         vista.setVisible(true);
+        vista.setSize(700, 925);
 
     }
+//////////////////////////////////////ABRIR VENTANAS/////////////////////////////////
 
     public void abrirVistaPrincipal() {
         vista.crearPanel(vistaMenuPrincipal);
+        vista.setSize(700, 925);
     }
 
     public void abrirVistaMenuDificultad() {
         vistaMenuDificultad = new VistaMenuDificultad(this);
         vista.crearPanel(vistaMenuDificultad);
+        vista.setSize(700, 925);
     }
 
-    public void abrirFrameRankingJugadores() {
+    public void abrirVistaRankingJugadores() {
         VistaRankingJugadores vistaRankingJugadores = new VistaRankingJugadores(this);
         vista.crearPanel(vistaRankingJugadores);
+        vista.setSize(700, 925);
     }
 
-    public void abrirPartida(String dificultad) {
+    public void abrirPartidaNueva(String dificultad) {
 
         Partida partida = new Partida(dificultad, this);
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
     }
+
+    public void abrirPartidaEmpezada(VistaJuegoCartas vistaJuegoCartas) {
+        vista.crearPanel(vistaJuegoCartas);
+        vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
+    }
+
+    public void abrirVistaPartidasGuardadas() {
+        VistaPartidasGuardadas vistaPartidasGuardadas = new VistaPartidasGuardadas(this);
+        vista.crearPanel(vistaPartidasGuardadas);
+        vista.setSize(700, 925);
+    }
+//////////////////////////////////////CARGAR ARRAYLIST////////////////////////////////////////////////////////
 
     public ArrayList<Carta> getArrayListCartasPar() {
         return ArrayListCartasPar;
@@ -69,7 +88,6 @@ public class Logica {
     public ArrayList<Carta> getArrayListCartasImpar() {
         return ArrayListCartasImpar;
     }
-    
 
     public void crearArrayListDeCartasImpar() {
 
@@ -107,7 +125,8 @@ public class Logica {
         ArrayListCartasImpar.add(carta16);
 
     }
-      public void crearArrayListDeCartasPar() {
+
+    public void crearArrayListDeCartasPar() {
 
         Carta carta1 = new Carta(this.getClass().getResource("/assets/lazarillo1.jpg"), this);
         Carta carta2 = new Carta(this.getClass().getResource("/assets/lazarillo2.jpg"), this);
@@ -143,6 +162,7 @@ public class Logica {
         ArrayListCartasPar.add(carta16);
 
     }
+//////////////////////////METODOS CARTAS////////////////////////////////////7
 
     public void voltearCarta(Carta carta) {
         imagenCartaAnverso = new ImageIcon(carta.getRutaAnverso());
@@ -157,6 +177,16 @@ public class Logica {
         for (Carta it : ArrayListCartasImpar) {
             it.ponerRerverso();
         }
+
+    }
+
+    ///////////////////
+    public void guardarPartida(Partida partida) {
+        ArrayPartidasGuardadas.add(partida);
+    }
+
+    public void cargarPartidaGuardada() {
         
+        //abrirPartidaEmpezada(vistaJuegoCartas);
     }
 }
