@@ -15,13 +15,24 @@ import javax.swing.JMenuItem;
  * @author dvdsa
  */
 public class ControladorBotonesMenuSuperior implements ActionListener{
+
+    private Logica logica;
+    
+    public ControladorBotonesMenuSuperior(Logica logica) {
+        this.logica=logica;
+    }
+    
+    /*Error en los menus*/
  
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion=((JMenuItem)ae.getSource()).getText();
         switch (opcion) {
+            case "Inicio":
+                logica.abrirVistaPrincipal();
+                break;
             case "Play":
-              //  logica.abrirVistaMenuDificultad();
+                logica.abrirVistaMenuDificultad();
                 break;
             case "Load game": //cargar partida
                 break;

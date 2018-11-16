@@ -16,21 +16,14 @@ public class Vista extends JFrame {
 
     private MenuSuperior menuSuperior;
     private JPanel panel;
-    //private VistaMenuPrincipal vistaMenuPrincipal;
-    //private Logica logica;
-    //private Logica logica2;
-    public Vista(JPanel panel1) {
-        //logica = new Logica (this);
-        //vistaMenuPrincipal = new VistaMenuPrincipal(logica);
-        //panel=vistaMenuPrincipal;
-        //this.add(panel);
-        //this.add(vistaMenuPrincipal);
+    private Logica logica;
+    
+    public Vista(JPanel panel1,Logica logica) {
         configuracionMenuSuperior();
         this.panel=panel1;
         this.add(panel);
+        this.logica=logica;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //logica2 = new Logica(this);
-        //logica2.crearArrayListDeCartas();
 
     }
     
@@ -42,7 +35,7 @@ public class Vista extends JFrame {
     }
 
     private void configuracionMenuSuperior() {
-        menuSuperior = new MenuSuperior();
+        menuSuperior = new MenuSuperior(logica);
         this.setJMenuBar(menuSuperior);
     }
 }

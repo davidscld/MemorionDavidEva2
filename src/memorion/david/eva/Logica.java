@@ -26,7 +26,7 @@ public class Logica {
     public Logica() {
         crearArrayListDeCartas();
         vistaMenuPrincipal=new VistaMenuPrincipal(this);
-        vista=new Vista(vistaMenuPrincipal);
+        vista=new Vista(vistaMenuPrincipal,this);
         vista.setVisible(true);
         
     }
