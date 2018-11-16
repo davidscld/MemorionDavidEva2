@@ -22,6 +22,7 @@ public class Partida extends JPanel {
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
+    private JLabel JLcontador;
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
@@ -38,7 +39,7 @@ public class Partida extends JPanel {
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 20, 20));
         configurarPanel();
-
+        crearContador();
     }
 
     private void calcularDistribucion() {
@@ -80,6 +81,14 @@ public class Partida extends JPanel {
             this.add(it);
         }
 
+    }
+
+    public JLabel crearContador() {
+        JLcontador = new JLabel();
+        
+        
+        return null;
+        
     }
 
 }
