@@ -25,7 +25,7 @@ public class Partida extends JPanel {
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
-    private JLabel JLcontador=new JLabel();
+    private JLabel JLcontador=new JLabel("");
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
@@ -90,7 +90,7 @@ public class Partida extends JPanel {
     public String getNombrePartida() {
         return nombrePartida;
     }
-    public JLabel tiempo(){
+    public JLabel JLabeltiempo(){
         crearContadorTiempo();
         JLcontador.setBounds(700, 50, 40, 70);
         return JLcontador;
@@ -113,7 +113,7 @@ public class Partida extends JPanel {
             
         });
         tiempo.start();
-        //tiempo.setRepeats(false);
+        tiempo.setRepeats(false);
         while(true);
         
     }
