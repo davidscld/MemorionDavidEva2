@@ -5,9 +5,12 @@
  */
 package memorion.david.eva;
 
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -17,18 +20,21 @@ import javax.swing.JPanel;
 public class Partida extends JPanel {
 
     private String dificultad, nombrePartida;
+    private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeCartasUsadas[];
-
+    //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
+    private int tiempoUsado=0;
+
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
-        this.logica= logica;
+        this.logica = logica;
         this.dificultad = dificultad;
         this.nombrePartida = "Partida " + numeroDePartida;
-
-        this.setBounds(500, 100, 600, 800);
+        this.setBackground(Color.yellow);
+        this.setBounds(200, 100, 800, 600);
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 10, 10));
         configurarPanel();
@@ -40,24 +46,36 @@ public class Partida extends JPanel {
         if (this.dificultad.equals("Low")) {
             this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
-            numeroDeCartasUsadas = new int[]{0, 1, 2, 0, 1, 2};
-            
+
         } else if (this.dificultad.equals("Medium")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 5;
-            numeroDeCartasUsadas = new int[]{0, 1, 2, 3, 4, 0, 1, 2, 3, 4};
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
-            numeroDeCartasUsadas = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
+
         }
     }
 
     private void configurarPanel() {
-        Collections.shuffle(Arrays.asList(numeroDeCartasUsadas));
-        for (int i = 0; i < (numeroCartasAncho * numeroCartasLargo); i++) {
-            this.add(logica.getArrayListCartas().get(numeroDeCartasUsadas[i]));//Aqui añado la cartas con el reverso    
+
+        for (int i = 0; i < ((numeroCartasAncho * numeroCartasLargo) / 2); i++) {
+
+            cartasSeleccionadas.add(logica.getArrayListCartasPar().get(i));
+            Carta carta = logica.getArrayListCartasPar().get(i);
+            for (int j = 0; j < logica.getArrayListCartasImpar().size(); j++) {
+                if (carta.getRutaAnverso().equals(logica.getArrayListCartasImpar().get(j).getRutaAnverso())) {
+                    cartasSeleccionadas.add(logica.getArrayListCartasImpar().get(j));
+
+                }
+            }
         }
+       
+        Collections.shuffle(cartasSeleccionadas);
+        for (Carta it : cartasSeleccionadas) {
+            this.add(it);
+        }
+
     }
 
 }
