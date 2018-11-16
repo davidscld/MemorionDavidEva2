@@ -30,6 +30,7 @@ public class VistaJuegoCartas extends JPanel {
         this.add(partida);
         this.setLayout(null);
         this.setSize(700, 925);
+        this.partida.crearContadorTiempo();
 
     }
 

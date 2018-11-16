@@ -7,11 +7,14 @@ package memorion.david.eva;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -22,11 +25,12 @@ public class Partida extends JPanel {
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
-    private JLabel JLcontador;
+    private JLabel JLcontador=new JLabel();
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
-    private int tiempoUsado = 0;
+    private int minutos=0,segundos=0;
+    private Timer tiempo;
 
     public Partida(String dificultad, Logica logica) {
         n++;
@@ -39,7 +43,7 @@ public class Partida extends JPanel {
         calcularDistribucion();
         this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 20, 20));
         configurarPanel();
-        crearContador();
+  
     }
 
     private void calcularDistribucion() {
@@ -83,11 +87,34 @@ public class Partida extends JPanel {
 
     }
 
-    public JLabel crearContador() {
-        JLcontador = new JLabel();
-        
-        
-        return null;
+    public String getNombrePartida() {
+        return nombrePartida;
+    }
+    public JLabel tiempo(){
+        crearContadorTiempo();
+        JLcontador.setBounds(700, 50, 40, 70);
+        return JLcontador;
+    }
+
+    public void crearContadorTiempo() {
+        this.tiempo=new javax.swing.Timer(1000,new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(segundos==59){
+                    minutos++;
+                    segundos=0;
+                }else{
+                    segundos++;
+                }
+                JLcontador.setText(minutos+":"+segundos);
+                System.out.println("Minutos: "+minutos+"Segundos "+segundos );
+                  
+            }
+            
+        });
+        tiempo.start();
+        //tiempo.setRepeats(false);
+        while(true);
         
     }
 
