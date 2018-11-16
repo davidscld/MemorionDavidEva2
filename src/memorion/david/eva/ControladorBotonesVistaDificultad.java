@@ -11,41 +11,35 @@ import javax.swing.JButton;
 
 /**
  *
- * @author dvdsa
+ * @author Eva
  */
-public class ControladorBotonesVistas implements ActionListener {
-Logica logica;
-    public ControladorBotonesVistas(Logica logica) {
-        this.logica = logica;
+public class ControladorBotonesVistaDificultad implements ActionListener{
+    
+    private Logica logica;
+    
+    ControladorBotonesVistaDificultad(Logica logica) {
+        this.logica=logica;
     }
-
-  
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion = ((JButton) ae.getSource()).getText();
         System.out.println(opcion);
         switch (opcion) {
-            //Casos de la VistaMenuPrincial
-            case "Play":
-                logica.abrirVistaMenuDificultad();
-                break;
-            case "Saved":
-                //Primero hay que saber guardar
-                break;
-            case "Score":
-                logica.abrirFrameRankingJugadores();
-                break;
-                
-                //Casos de la VistaMenuDificultad
             case "Low":
+                logica.barajar();
+                logica.abrirPartida(opcion);
+                break;
             case "High":
+                logica.barajar();
+                logica.abrirPartida(opcion);
+                break;
             case "Medium": 
                 logica.barajar();
                 logica.abrirPartida(opcion);
                 break;
 
-        }
+        }    
     }
-
+    
 }

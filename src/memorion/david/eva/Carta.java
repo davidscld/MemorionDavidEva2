@@ -21,15 +21,16 @@ public class Carta extends JLabel {
     private static int n = 0;
     private boolean emparejada, levantada;
     private ControladorJuegoCartas controladorJuegoCartas;
+    private Logica logica;
 
-    public Carta(URL rutaAnverso) {
+    public Carta(URL rutaAnverso,Logica logica) {
         n++;
         id = n;
         this.rutaAnverso = rutaAnverso;
 
         this.emparejada = false;
         this.levantada = false;
-
+        this.logica=logica;
         asignarControlador();
     }
 
@@ -58,13 +59,12 @@ public class Carta extends JLabel {
     }
 
     private void asignarControlador() {
-        controladorJuegoCartas = new ControladorJuegoCartas();
+        controladorJuegoCartas = new ControladorJuegoCartas(logica);
         this.addMouseListener(controladorJuegoCartas);
 
     }
-
     public void ponerRerverso() {
-        this.rutaReverso = this.getClass().getResource("/assets/reverso.jpg");
+        this.rutaReverso = getClass().getResource("/assets/reverso.jpg");
         imagenCarta = new ImageIcon(rutaReverso);
         this.setIcon(imagenCarta);
     }

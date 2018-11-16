@@ -6,6 +6,8 @@
 package memorion.david.eva;
 
 import java.awt.GridLayout;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JPanel;
 
 /**
@@ -52,9 +54,9 @@ public class Partida extends JPanel {
     }
 
     private void configurarPanel() {
-        
+        Collections.shuffle(Arrays.asList(numeroDeCartasUsadas));
         for (int i = 0; i < (numeroCartasAncho * numeroCartasLargo); i++) {
-            this.add(logica.getArrayListCartas().get(i));//Aqui añado la cartas con el reverso
+            this.add(logica.getArrayListCartas().get(numeroDeCartasUsadas[i]));//Aqui añado la cartas con el reverso    
         }
     }
 

@@ -15,11 +15,10 @@ import java.awt.event.MouseEvent;
 public class ControladorJuegoCartas extends MouseAdapter {
 
     private Logica logica;
-
-    public ControladorJuegoCartas() {
-  
+    public ControladorJuegoCartas(Logica logica) {
+        this.logica=logica;
     }
-
+//Aqui da error
     @Override
     public void mouseClicked(MouseEvent me) {
         logica.voltearCarta((Carta)me.getSource());

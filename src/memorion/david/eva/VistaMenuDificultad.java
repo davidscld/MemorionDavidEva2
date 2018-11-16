@@ -24,16 +24,17 @@ public class VistaMenuDificultad extends JPanel {
     private JLabel JLfondo;
     private Label LBtitulo;
     private ImageIcon IMGimagenFondo;
-    private ControladorBotonesVistas controladorBotonesVistas;
+    private ControladorBotonesVistaDificultad controladorBotonesVistasDifucultad;
     private Logica logica;
     
     
     public VistaMenuDificultad(Logica logica) {
        // configurarTitulo();
         System.out.println("ENTRO");
+        this.logica = logica;
         configurarBotonoes();
         configurarVentana();
-        this.logica = logica;
+        
     }
 
     private void configurarVentana() {
@@ -83,10 +84,10 @@ public class VistaMenuDificultad extends JPanel {
     }
 
     private void crearActionJButton() {
-        controladorBotonesVistas = new ControladorBotonesVistas(logica);
-        JBdifAlta.addActionListener(controladorBotonesVistas);
-        JBdifMedia.addActionListener(controladorBotonesVistas);
-        JBdifBaja.addActionListener(controladorBotonesVistas);
+        controladorBotonesVistasDifucultad = new ControladorBotonesVistaDificultad(logica);
+        JBdifAlta.addActionListener(controladorBotonesVistasDifucultad);
+        JBdifMedia.addActionListener(controladorBotonesVistasDifucultad);
+        JBdifBaja.addActionListener(controladorBotonesVistasDifucultad);
     }
 
 }
