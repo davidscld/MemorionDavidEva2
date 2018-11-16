@@ -19,7 +19,7 @@ public class Logica {
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
     private VistaMenuDificultad vistaMenuDificultad;
-
+    private Partida partida;
     private static ArrayList<Carta> ArrayListCartasPar = new ArrayList<>();
 
     private static ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
@@ -58,14 +58,14 @@ public class Logica {
     }
 
     public void abrirPartidaNueva(String dificultad) {
-
-        Partida partida = new Partida(dificultad, this);
+        this.partida = new Partida(dificultad, this);
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
     }
 
-    public void abrirPartidaEmpezada(VistaJuegoCartas vistaJuegoCartas) {
+    private void abrirPartidaEmpezada(Partida partida) {
+        VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
     }
@@ -181,17 +181,40 @@ public class Logica {
     }
 
     ///////////////////
-    public void guardarPartida(Partida partida) {
-        ArrayPartidasGuardadas.add(partida);
+    public void guardarPartida() {
+        boolean existe = false;
+        int posicion = 0;
+        if (!ArrayPartidasGuardadas.isEmpty()) {
+            for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
+                if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
+                    posicion = i;
+                    existe = true;
+                    break;
+                }
+            }
+        }
+
+        if (!existe) {
+            ArrayPartidasGuardadas.add(this.partida);
+
+        } else {
+            ArrayPartidasGuardadas.get(posicion).add(this.partida);
+        }
+
     }
 
-    public void cargarPartidaGuardada() {
-        
-        //abrirPartidaEmpezada(vistaJuegoCartas);
+    public void cargarPartidaGuardada(String nombrePartida) {
+        Partida partidaEscogida = null;
+        for (Partida it : ArrayPartidasGuardadas) {
+            if (it.getNombrePartida().equals(nombrePartida)) {
+                partidaEscogida = it;
+            }
+        }
+        abrirPartidaEmpezada(partidaEscogida);
     }
 
     public ArrayList<Partida> getArrayPartidasGuardadas() {
         return ArrayPartidasGuardadas;
     }
-    
+
 }

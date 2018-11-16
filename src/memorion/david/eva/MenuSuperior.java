@@ -16,9 +16,11 @@ public class MenuSuperior extends JMenuBar{
     
     private ControladorBotonesMenuSuperior controladorMenuSuperior;
     private Logica logica;
+   
     
     public MenuSuperior(Logica logica) {
         this.logica=logica;
+        
         crearMenu();
     }
     

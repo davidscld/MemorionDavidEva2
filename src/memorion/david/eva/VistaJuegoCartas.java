@@ -31,7 +31,7 @@ public class VistaJuegoCartas extends JPanel {
         this.setLayout(null);
         this.setSize(700, 925);
         /*Da error el timer no sigue con la ejecucion del programa*/
-        //this.partida.JLabeltiempo();
+        //this.add(partida.JLabeltiempo());
 
     }
 

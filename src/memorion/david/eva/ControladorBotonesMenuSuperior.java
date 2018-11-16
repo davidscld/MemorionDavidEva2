@@ -14,19 +14,20 @@ import javax.swing.JMenuItem;
  *
  * @author dvdsa
  */
-public class ControladorBotonesMenuSuperior implements ActionListener{
+public class ControladorBotonesMenuSuperior implements ActionListener {
 
     private Logica logica;
-    
+  
+
     public ControladorBotonesMenuSuperior(Logica logica) {
-        this.logica=logica;
+        this.logica = logica;
+       
     }
-    
+
     /*Error en los menus*/
- 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String opcion=((JMenuItem)ae.getSource()).getText();
+        String opcion = ((JMenuItem) ae.getSource()).getText();
         switch (opcion) {
             case "Inicio":
                 logica.abrirVistaPrincipal();
@@ -38,8 +39,10 @@ public class ControladorBotonesMenuSuperior implements ActionListener{
                 logica.abrirVistaPartidasGuardadas();
                 break;
             case "Save game": //guardar partida
+
+                logica.guardarPartida();
                 break;
         }
     }
-    
+
 }

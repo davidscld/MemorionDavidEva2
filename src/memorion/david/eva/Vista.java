@@ -17,9 +17,9 @@ public class Vista extends JFrame {
     private MenuSuperior menuSuperior;
     private JPanel panel;
     private Logica logica;
+
     
     public Vista(JPanel panel1,Logica logica) {
-        
         this.setSize(700, 925);
         this.panel=panel1;
         this.add(panel);
@@ -35,6 +35,7 @@ public class Vista extends JFrame {
         this.add(panel);
         this.repaint();
     }
+
 
     private void configuracionMenuSuperior() {
         menuSuperior = new MenuSuperior(this.logica);//CREO QUE LOGICA ES NULO

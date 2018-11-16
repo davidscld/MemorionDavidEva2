@@ -46,6 +46,11 @@ public class Partida extends JPanel {
   
     }
 
+    public String getDificultad() {
+        return dificultad;
+    }
+    
+
     private void calcularDistribucion() {
 
         if (this.dificultad.equals("Low")) {
