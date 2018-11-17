@@ -6,7 +6,11 @@ Cada JLabel se añadira al Panel que haya dentro de esta clase
  */
 package memorion.david.eva;
 
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +25,8 @@ public class VistaRankingJugadores extends JPanel {
 
     private JPanel panelCentral;
     private JLabel nombre, numeroDeMovimientos;
-
+    private URL url = getClass().getResource("/assets/fondoPartidasJugadas.jpg");
+    private Image imagenFondo = new ImageIcon(url).getImage();
     public VistaRankingJugadores(Logica logica) {
         this.logica = logica;
         configurarVentana();
@@ -35,6 +40,11 @@ public class VistaRankingJugadores extends JPanel {
         this.setLayout(null);
         crearPanelCentral();
 
+    }
+        public void paint(Graphics g) {
+        g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+        super.paint(g);
     }
 
     private void crearListado() {
@@ -61,6 +71,7 @@ public class VistaRankingJugadores extends JPanel {
     private void crearPanelCentral() {
         panelCentral = new JPanel();//Hay que asignarle su gridLayout
         panelCentral.setBounds(50, 50, 500, 700);
+        panelCentral.setOpaque(false);
         this.add(panelCentral);
     }
 }

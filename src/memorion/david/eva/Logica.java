@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  *
  * @author dvdsa
  */
-public class Logica {
+public class Logica  {
 
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
@@ -264,5 +264,14 @@ public class Logica {
 
         }
 
+    }
+    public void ordenarArrayListGanadores(){
+    
+    }
+    
+    public void resetearEstadisticas(){
+
+        ArrayPartidasGuardadas.clear();
+        ArrayListJugador.clear();
     }
 }

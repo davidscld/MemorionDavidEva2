@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  */
 public class VistaMenuPrincipal extends JPanel {
 
-    private JButton JBranking, JBjugar, JBpGuardadas;
+    private JButton JBranking, JBjugar, JBpGuardadas, JBresetear;
     private JLabel JLfondo;
     private ImageIcon IMGimagenFondo;
     private ControladorBotonesVistas controladorBotonesVistas;
@@ -66,6 +66,12 @@ public class VistaMenuPrincipal extends JPanel {
         JBranking.setBounds(x, 500, ancho, alto);
         JBranking.setFont(f);
         this.add(JBranking);
+        //BOTON RESETEAR
+        JBresetear = new JButton("Reset");
+        JBresetear.setBounds(x, 600, ancho, alto);
+        JBresetear.setFont(f);
+        this.add(JBresetear);
+        
 
     }
     
@@ -76,6 +82,7 @@ public class VistaMenuPrincipal extends JPanel {
         JBjugar.addActionListener(controladorBotonesVistas);
         JBpGuardadas.addActionListener(controladorBotonesVistas);
         JBranking.addActionListener(controladorBotonesVistas);
+        JBresetear.addActionListener(controladorBotonesVistas);
     }
 
 }

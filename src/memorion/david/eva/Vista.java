@@ -5,7 +5,10 @@
  */
 package memorion.david.eva;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -25,10 +28,8 @@ public class Vista extends JFrame {
         this.add(panel);
         this.logica=logica;
         configuracionMenuSuperior();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        configurarCierreAplicacion();
     }
-    
     public void crearPanel(JPanel panel1){
         this.remove(panel);
         this.panel=panel1;
@@ -41,5 +42,21 @@ public class Vista extends JFrame {
         menuSuperior = new MenuSuperior(this.logica);
     
         this.setJMenuBar(menuSuperior);
+    }
+
+    private void configurarCierreAplicacion() {
+             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+          
+            public void windowClosing(WindowEvent evt) {
+                opcion();
+            }
+        });
+
+    }
+    private void opcion(){
+       if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir?",
+                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+            System.exit(0);
     }
 }

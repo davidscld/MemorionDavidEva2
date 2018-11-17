@@ -5,19 +5,22 @@
  */
 package memorion.david.eva;
 
+import java.util.Comparator;
+
 /**
  *
  * @author dvdsa
  */
 public class Jugador {
- private String nombre;
- private int numeroMovimientos, tiempoUsado;
+
+    private String nombre;
+    private int numeroMovimientos, tiempoUsado;
 
     public Jugador(String nombre, int numeroMovimientos, int tiempoUsado) {
         this.nombre = nombre;
         this.numeroMovimientos = numeroMovimientos;
         this.tiempoUsado = tiempoUsado;
-        
+
     }
 
     public String getNombre() {
@@ -28,9 +31,10 @@ public class Jugador {
         return numeroMovimientos;
     }
 
-    
     public int getTiempoUsado() {
         return tiempoUsado;
     }
- 
+
+
+
 }

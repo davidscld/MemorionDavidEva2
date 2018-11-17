@@ -25,15 +25,15 @@ public class Partida extends JPanel {
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeMovimientos;
-    private JLabel JLcontador=new JLabel("");
+    private JLabel JLcontador = new JLabel("");
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
-    private int minutos=0,segundos=0, tiempoTotalUsado=0;
+    private int minutos = 0, segundos = 0, tiempoTotalUsado = 0;
     private Timer tiempo;
 
-   private int cantidadCartas;
-    
+    private int cantidadCartas;
+
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
@@ -43,41 +43,39 @@ public class Partida extends JPanel {
         this.nombrePartida = "Partida " + numeroDePartida;
         this.setBounds(200, 100, 800, 600);
         calcularDistribucion();
-        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 20, 20));
+        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo));
         configurarPanel();
-  
+
     }
 
     public String getDificultad() {
         return dificultad;
     }
-    
 
     private void calcularDistribucion() {
 
         if (this.dificultad.equals("Low")) {
             this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
-            cantidadCartas=6;
+            cantidadCartas = 6;
             this.setBounds(650, 100, 900, 800);
 
         } else if (this.dificultad.equals("Medium")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 5;
-            this.setBounds(500, 50 , 900, 800);
-cantidadCartas=10;
+            this.setBounds(500, 50, 900, 800);
+            cantidadCartas = 10;
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
             this.setBounds(500, 50, 1000, 800);
-cantidadCartas=16;
+            cantidadCartas = 16;
         }
     }
 
     public int getCantidadCartas() {
         return cantidadCartas;
     }
-    
 
     private void configurarPanel() {
 
@@ -103,32 +101,33 @@ cantidadCartas=16;
     public String getNombrePartida() {
         return nombrePartida;
     }
-    public JLabel JLabeltiempo(){
+
+    public JLabel JLabeltiempo() {
         crearContadorTiempo();
         JLcontador.setBounds(700, 50, 40, 70);
         return JLcontador;
     }
 
     public void crearContadorTiempo() {
-        this.tiempo=new javax.swing.Timer(1000,new ActionListener() {
+        this.tiempo = new javax.swing.Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(segundos==59){
+                if (segundos == 59) {
                     minutos++;
-                    segundos=0;
-                }else{
+                    segundos = 0;
+                } else {
                     segundos++;
                 }
-                JLcontador.setText(minutos+":"+segundos);
-                System.out.println("Minutos: "+minutos+"Segundos "+segundos );
-                  
+                JLcontador.setText(minutos + ":" + segundos);
+                System.out.println("Minutos: " + minutos + "Segundos " + segundos);
+
             }
-            
+
         });
         tiempo.start();
         tiempo.setRepeats(false);
-        while(true);
-        
+        while (true);
+
     }
 
     public int getNumeroDeMovimientos() {
@@ -140,8 +139,8 @@ cantidadCartas=16;
     }
 
     public int getTiempoTotalUsado() {
+        this.tiempoTotalUsado = this.minutos * 60 + this.segundos;
         return tiempoTotalUsado;
     }
-    
 
 }
