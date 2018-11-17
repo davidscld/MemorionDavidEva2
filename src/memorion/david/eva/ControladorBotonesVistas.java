@@ -44,6 +44,10 @@ Logica logica;
                 logica.barajar();
                 logica.abrirPartidaNueva(opcion);
                 break;
+            case "Submit":
+                logica.eliminarPartidaGuardada();//Eliminara la partida en caso de que la hubiera jugado antes
+                logica.guardarGanador();
+                break;
 
         }
     }

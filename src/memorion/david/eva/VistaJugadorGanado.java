@@ -50,4 +50,9 @@ public class VistaJugadorGanado extends JPanel {
         this.add(JBenviar);
         //Cuando pulse necesito recoger de la partida el numero de pulsaciones y el tiempo, juntarlo con el nombre que recojo y crear objeto de la clase jugador
     }
+
+    public JTextField getJTnombre() {
+        return JTnombre;
+    }
+    
 }

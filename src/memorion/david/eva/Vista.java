@@ -38,7 +38,7 @@ public class Vista extends JFrame {
 
 
     private void configuracionMenuSuperior() {
-        menuSuperior = new MenuSuperior(this.logica);//CREO QUE LOGICA ES NULO
+        menuSuperior = new MenuSuperior(this.logica);
     
         this.setJMenuBar(menuSuperior);
     }

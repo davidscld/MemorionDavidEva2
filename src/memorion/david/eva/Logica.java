@@ -5,6 +5,7 @@
  */
 package memorion.david.eva;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.ImageIcon;
@@ -20,44 +21,48 @@ public class Logica {
     private VistaMenuPrincipal vistaMenuPrincipal;
     private VistaMenuDificultad vistaMenuDificultad;
     private Partida partida;
-    private static ArrayList<Carta> ArrayListCartasPar = new ArrayList<>();
-
-    private static ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
-
+    private ArrayList<Carta> ArrayListCartasPar = new ArrayList<>();
+    private ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
     private static ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
-    private ArrayList<Partida> ArrayPartidasGuardadas = new ArrayList<>();
-
+    private static ArrayList<Partida> ArrayPartidasGuardadas = new ArrayList<>();
     private ImageIcon imagenCartaAnverso;
+    private boolean existe = false;
+    private int posicion = 0;
 
     public Logica() {
-        crearArrayListDeCartasPar();
         crearArrayListDeCartasImpar();
+        crearArrayListDeCartasPar();
         vistaMenuPrincipal = new VistaMenuPrincipal(this);
         vista = new Vista(vistaMenuPrincipal, this);
         vista.setVisible(true);
         vista.setSize(700, 925);
+        this.partida = null;
 
     }
 //////////////////////////////////////ABRIR VENTANAS/////////////////////////////////
 
     public void abrirVistaPrincipal() {
+        this.partida = null;
         vista.crearPanel(vistaMenuPrincipal);
         vista.setSize(700, 925);
     }
 
     public void abrirVistaMenuDificultad() {
+        this.partida = null;
         vistaMenuDificultad = new VistaMenuDificultad(this);
         vista.crearPanel(vistaMenuDificultad);
         vista.setSize(700, 925);
     }
 
     public void abrirVistaRankingJugadores() {
+        this.partida = null;
         VistaRankingJugadores vistaRankingJugadores = new VistaRankingJugadores(this);
         vista.crearPanel(vistaRankingJugadores);
         vista.setSize(700, 925);
     }
 
     public void abrirPartidaNueva(String dificultad) {
+        this.partida = null;
         this.partida = new Partida(dificultad, this);
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
@@ -65,15 +70,20 @@ public class Logica {
     }
 
     private void abrirPartidaEmpezada(Partida partida) {
+        this.partida = null;
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
+        System.out.println("Numero de cartas " + partida.getCantidadCartas());
+        partida.setBackground(Color.yellow);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
     }
 
     public void abrirVistaPartidasGuardadas() {
+        this.partida = null;
         VistaPartidasGuardadas vistaPartidasGuardadas = new VistaPartidasGuardadas(this);
         vista.crearPanel(vistaPartidasGuardadas);
         vista.setSize(700, 925);
+
     }
 //////////////////////////////////////CARGAR ARRAYLIST////////////////////////////////////////////////////////
 
@@ -89,7 +99,7 @@ public class Logica {
         return ArrayListCartasImpar;
     }
 
-    public void crearArrayListDeCartasImpar() {
+    private void crearArrayListDeCartasImpar() {
 
         Carta carta1 = new Carta(this.getClass().getResource("/assets/lazarillo1.jpg"), this);
         Carta carta2 = new Carta(this.getClass().getResource("/assets/lazarillo2.jpg"), this);
@@ -126,7 +136,7 @@ public class Logica {
 
     }
 
-    public void crearArrayListDeCartasPar() {
+    private void crearArrayListDeCartasPar() {
 
         Carta carta1 = new Carta(this.getClass().getResource("/assets/lazarillo1.jpg"), this);
         Carta carta2 = new Carta(this.getClass().getResource("/assets/lazarillo2.jpg"), this);
@@ -162,6 +172,10 @@ public class Logica {
         ArrayListCartasPar.add(carta16);
 
     }
+
+    public ArrayList<Partida> getArrayPartidasGuardadas() {
+        return ArrayPartidasGuardadas;
+    }
 //////////////////////////METODOS CARTAS////////////////////////////////////7
 
     public void voltearCarta(Carta carta) {
@@ -180,25 +194,30 @@ public class Logica {
 
     }
 
-    ///////////////////
+    ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
+
+    public Partida getPartida() {
+        return partida;
+    }
+    
+    
     public void guardarPartida() {
-        boolean existe = false;
-        int posicion = 0;
-        if (!ArrayPartidasGuardadas.isEmpty()) {
-            for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
-                if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
-                    posicion = i;
-                    existe = true;
-                    break;
+        existe = false;
+        if (!(this.partida == null)) {
+
+            if (!ArrayPartidasGuardadas.isEmpty()) {
+                for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
+                    if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
+                        posicion = i;
+                        existe = true;
+                    }
                 }
+            }            //NO SOBREESCRIBE LAS PARTIDAS SI LAS GUARDAMOS VARIAS VECES
+
+            if (!existe) {
+                ArrayPartidasGuardadas.add(this.partida);
+
             }
-        }
-
-        if (!existe) {
-            ArrayPartidasGuardadas.add(this.partida);
-
-        } else {
-            ArrayPartidasGuardadas.get(posicion).add(this.partida);
         }
 
     }
@@ -210,11 +229,26 @@ public class Logica {
                 partidaEscogida = it;
             }
         }
+
         abrirPartidaEmpezada(partidaEscogida);
     }
 
-    public ArrayList<Partida> getArrayPartidasGuardadas() {
-        return ArrayPartidasGuardadas;
+    public void eliminarPartidaGuardada() {
+        existe = false;
+        if (!ArrayPartidasGuardadas.isEmpty()) {
+            for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
+                if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
+                    posicion = i;
+                    existe = true;
+                }
+            }
+        }
+        if(existe){
+            ArrayPartidasGuardadas.remove(posicion);
+        }
     }
 
+    public void guardarGanador() {
+       // Jugador jugador = new Jugador(nombre, posicion, posicion)
+    }
 }

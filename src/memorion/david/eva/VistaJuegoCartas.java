@@ -22,7 +22,7 @@ public class VistaJuegoCartas extends JPanel {
     private Partida partida;
     private MenuSuperior menuSuperior;
     private URL url = getClass().getResource("/assets/fondo.jpg");
-    private Image imgCarretera = new ImageIcon(url).getImage();
+    private Image imagenFondo = new ImageIcon(url).getImage();
 
     public VistaJuegoCartas(Partida partida) {
 
@@ -37,7 +37,7 @@ public class VistaJuegoCartas extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(imgCarretera, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
         this.setOpaque(false);
         super.paint(g);
     }

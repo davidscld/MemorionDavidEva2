@@ -7,6 +7,7 @@ package memorion.david.eva;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -31,11 +32,12 @@ public class MenuSuperior extends JMenuBar{
         JMenuItem nuevaPartida=new JMenuItem("Play");
         JMenuItem cargarPartida=new JMenuItem("Load game");
         JMenuItem guardarPartida=new JMenuItem("Save game");
-        
+        inicio.setHorizontalTextPosition(SwingConstants.CENTER);
+        inicio.invalidate();
 
         // se define una barra de menú
         JMenuBar menuBar=new JMenuBar();
-        
+       
         //Añadimos escuchadores a los MEnuItem
         inicio.addActionListener(controladorMenuSuperior);
         nuevaPartida.addActionListener(controladorMenuSuperior);

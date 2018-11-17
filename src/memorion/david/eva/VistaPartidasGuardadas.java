@@ -5,7 +5,12 @@
  */
 package memorion.david.eva;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,41 +24,55 @@ public class VistaPartidasGuardadas extends JPanel {
 
     private Logica logica;
     private int filas, columnas;
-    private JLabel JLpartida;
     private ControladorPartidasGuardadas controladorPartidasGuardadas;
-    private ImageIcon IMGimagenFondo;
-    private JLabel JLfondo;
+    private JPanel panelCentral;
+    private URL url = getClass().getResource("/assets/fondoPartidasJugadas.jpg");
+    private Image imagenFondo = new ImageIcon(url).getImage();
+    Font f = new Font("Cambria", Font.BOLD, 30);
 
     public VistaPartidasGuardadas(Logica logica) {
         this.logica = logica;
         configurarVentana();
-        this.columnas = 0;
+        this.columnas = 1;
+        this.filas = 12;
 
     }
 
     private void configurarVentana() {
         controladorPartidasGuardadas = new ControladorPartidasGuardadas(logica);
         this.setSize(720, 905);
-
-        IMGimagenFondo = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
-        JLfondo = new JLabel();
-        JLfondo.setIcon(IMGimagenFondo);
-        JLfondo.setBounds(0, -30, 700, 900);
-        this.add(JLfondo);
+        this.setLayout(null);
+        configurarPanelCentral();
         mostrarPartidas();
 
     }
 
+    public void paint(Graphics g) {
+        g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+        super.paint(g);
+    }
+
     public void mostrarPartidas() {
         if (!logica.getArrayPartidasGuardadas().isEmpty()) {
-            this.filas = logica.getArrayPartidasGuardadas().size();
-            this.setLayout(new GridLayout(filas, columnas));
+           
             for (Partida it : logica.getArrayPartidasGuardadas()) {
-               JLabel JLpartida = new JLabel(it.getNombrePartida());
+                JLabel JLpartida = new JLabel(it.getNombrePartida());
+                JLpartida.setFont(f);
                 JLpartida.addMouseListener(controladorPartidasGuardadas);
-                this.add(JLpartida);
+                panelCentral.repaint();
+                panelCentral.add(JLpartida);
+                
             }
 
         }
+    }
+
+    private void configurarPanelCentral() {
+        panelCentral = new JPanel();
+        panelCentral.setLayout(new GridLayout(12, 0, 10, 10));
+        panelCentral.setBounds(240, 20, 300, 600);
+        panelCentral.setOpaque(false);
+        this.add(panelCentral);
     }
 }

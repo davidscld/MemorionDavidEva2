@@ -24,19 +24,21 @@ public class Partida extends JPanel {
 
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
-    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida;
+    private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeMovimientos;
     private JLabel JLcontador=new JLabel("");
     //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
-    private int minutos=0,segundos=0;
+    private int minutos=0,segundos=0, tiempoTotalUsado=0;
     private Timer tiempo;
 
+   private int cantidadCartas;
+    
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
         this.logica = logica;
-        this.setOpaque(false);
+        this.setOpaque(true);
         this.dificultad = dificultad;
         this.nombrePartida = "Partida " + numeroDePartida;
         this.setBounds(200, 100, 800, 600);
@@ -56,20 +58,26 @@ public class Partida extends JPanel {
         if (this.dificultad.equals("Low")) {
             this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
+            cantidadCartas=6;
             this.setBounds(650, 100, 900, 800);
 
         } else if (this.dificultad.equals("Medium")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 5;
             this.setBounds(500, 50 , 900, 800);
-
+cantidadCartas=10;
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
             this.setBounds(500, 50, 1000, 800);
-
+cantidadCartas=16;
         }
     }
+
+    public int getCantidadCartas() {
+        return cantidadCartas;
+    }
+    
 
     private void configurarPanel() {
 
