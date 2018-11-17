@@ -20,14 +20,14 @@ public class Logica {
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
     private VistaMenuDificultad vistaMenuDificultad;
-    private Partida partida;
+    private Partida partida, partidaGuardada;
     private ArrayList<Carta> ArrayListCartasPar = new ArrayList<>();
     private ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
     private static ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
     private static ArrayList<Partida> ArrayPartidasGuardadas = new ArrayList<>();
     private ImageIcon imagenCartaAnverso;
     private boolean existe = false;
-    private int posicion = 0;
+    private int posicion = 0, pulsaciones = 0;
 
     public Logica() {
         crearArrayListDeCartasImpar();
@@ -63,6 +63,7 @@ public class Logica {
 
     public void abrirPartidaNueva(String dificultad) {
         this.partida = null;
+        this.pulsaciones = 0;
         this.partida = new Partida(dificultad, this);
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
@@ -71,11 +72,13 @@ public class Logica {
 
     private void abrirPartidaEmpezada(Partida partida) {
         this.partida = null;
+        this.partidaGuardada = partida;
         VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
         System.out.println("Numero de cartas " + partida.getCantidadCartas());
         partida.setBackground(Color.yellow);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
+        this.partidaGuardada = null;
     }
 
     public void abrirVistaPartidasGuardadas() {
@@ -195,12 +198,14 @@ public class Logica {
     }
 
     ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
-
     public Partida getPartida() {
         return partida;
     }
-    
-    
+
+    public void contadorPulsaciones() {
+        this.pulsaciones++;
+    }
+
     public void guardarPartida() {
         existe = false;
         if (!(this.partida == null)) {
@@ -215,6 +220,7 @@ public class Logica {
             }            //NO SOBREESCRIBE LAS PARTIDAS SI LAS GUARDAMOS VARIAS VECES
 
             if (!existe) {
+                this.partida.setNumeroDeMovimientos(this.pulsaciones);
                 ArrayPartidasGuardadas.add(this.partida);
 
             }
@@ -243,12 +249,20 @@ public class Logica {
                 }
             }
         }
-        if(existe){
+        if (existe) {
             ArrayPartidasGuardadas.remove(posicion);
         }
     }
 
     public void guardarGanador() {
-       // Jugador jugador = new Jugador(nombre, posicion, posicion)
+        if (this.partidaGuardada != null) {//En el caso de que haya acabado un partida que anteriormente hubiera guardado
+            Jugador jugador = new Jugador("nombre", this.partidaGuardada.getNumeroDeMovimientos(), this.partidaGuardada.getTiempoTotalUsado());
+            ArrayListJugador.add(jugador);
+        } else {//En el caso de que haya acabado una partida que acabe de empezar
+            Jugador jugador = new Jugador("nombre", this.partida.getNumeroDeMovimientos(), this.partida.getTiempoTotalUsado());
+            ArrayListJugador.add(jugador);
+
+        }
+
     }
 }

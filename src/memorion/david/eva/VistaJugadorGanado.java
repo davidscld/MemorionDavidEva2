@@ -42,6 +42,7 @@ public class VistaJugadorGanado extends JPanel {
     private void crearElementos() {
         JTnombre = new JTextField();
         JTnombre.setBounds(150, 300, 400, 40);
+        
         this.add(JTnombre);
         JBenviar = new JButton("Submit");
         JBenviar.setBounds(250, 400, 200, 50);

@@ -131,4 +131,17 @@ cantidadCartas=16;
         
     }
 
+    public int getNumeroDeMovimientos() {
+        return numeroDeMovimientos;
+    }
+
+    public void setNumeroDeMovimientos(int numeroDeMovimientos) {
+        this.numeroDeMovimientos = numeroDeMovimientos;
+    }
+
+    public int getTiempoTotalUsado() {
+        return tiempoTotalUsado;
+    }
+    
+
 }
