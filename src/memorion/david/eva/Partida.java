@@ -36,7 +36,7 @@ public class Partida extends JPanel {
     private Logica logica;
     private int minutos = 0, segundos = 0, tiempoTotalUsado = 0;
     private Timer tiempo;
-
+    private boolean partidaGuardada= false;
     private int cantidadCartas;
 
     public Partida(String dificultad, Logica logica) {
@@ -56,6 +56,20 @@ public class Partida extends JPanel {
     public String getDificultad() {
         return dificultad;
     }
+
+    public ArrayList<Carta> getCartasSeleccionadas() {
+        return cartasSeleccionadas;
+    }
+
+    public boolean isPartidaGuardada() {
+        return partidaGuardada;
+    }
+
+    public void setPartidaGuardada(boolean partidaGuardada) {
+        this.partidaGuardada = partidaGuardada;
+    }
+    
+    
 
     private void calcularDistribucion() {
 

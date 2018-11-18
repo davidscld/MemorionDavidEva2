@@ -190,21 +190,44 @@ public class Logica {
     }
 
     public void comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
+
         if (primeraPulsada.getRutaAnverso().equals(segundaPulsada.getRutaAnverso())) {
+            System.out.println("TODAS EMPAREJASD");
             primeraPulsada.setEmparejada(true);
             segundaPulsada.setEmparejada(true);
-              comprobarSiTodasEmparejadas();
-        }else{
-            primeraPulsada.setLevantada(true);
-            segundaPulsada.setLevantada(true);
+            comprobarSiTodasEmparejadas();
+        } else {
+            primeraPulsada.setLevantada(false);
+            segundaPulsada.setLevantada(false);
         }
     }
-    public void comprobarSiTodasEmparejadas(){
-       // if(Todas las cartas tiene su pareja){
-        guardarGanador();
-        //}
+
+    public void comprobarSiTodasEmparejadas() {
+
+        boolean todasEmparejadas = true;
+
+        if (this.partida == null) {//En el caso de que este acabando una partida que acabe de empezar
+            for (Carta it : this.partida.getCartasSeleccionadas()) {
+                if (!it.isEmparejada()) {
+                    todasEmparejadas = false;
+                }
+            }
+            if (todasEmparejadas) {
+                guardarGanador();
+            }
+        } else {//En el caso de que este acabando una partida que haya cargado que estuviera guardada
+            for (Carta it : this.partidaGuardada.getCartasSeleccionadas()) {
+                if (!it.isEmparejada()) {
+                    todasEmparejadas = false;
+                }
+            }
+            if (todasEmparejadas) {
+                guardarGanador();
+            }
+        }
+
     }
-    
+
     public void barajar() {
         Collections.shuffle(ArrayListCartasPar);
         for (Carta it : ArrayListCartasPar) {
@@ -236,6 +259,7 @@ public class Logica {
 
             if (!existe) {
                 this.partida.setNumeroDeMovimientos(this.pulsaciones);
+                this.partida.setPartidaGuardada(true);
                 ArrayPartidasGuardadas.add(this.partida);
 
             }
