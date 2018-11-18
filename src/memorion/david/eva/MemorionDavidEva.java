@@ -5,6 +5,8 @@
  */
 package memorion.david.eva;
 
+
+
 /**
  *
  * @author dvdsa
@@ -17,6 +19,7 @@ public class MemorionDavidEva {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         
         Logica logica=new Logica();
         

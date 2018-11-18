@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author dvdsa
  */
-public class Logica  {
+public class Logica {
 
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
@@ -28,6 +29,7 @@ public class Logica  {
     private ImageIcon imagenCartaAnverso;
     private boolean existe = false;
     private int posicion = 0, pulsaciones = 0;
+    private String nombreGanador = " ";
 
     public Logica() {
         crearArrayListDeCartasImpar();
@@ -182,10 +184,27 @@ public class Logica  {
 //////////////////////////METODOS CARTAS////////////////////////////////////7
 
     public void voltearCarta(Carta carta) {
+        carta.setLevantada(true);
         imagenCartaAnverso = new ImageIcon(carta.getRutaAnverso());
         carta.setIcon(imagenCartaAnverso);
     }
 
+    public void comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
+        if (primeraPulsada.getRutaAnverso().equals(segundaPulsada.getRutaAnverso())) {
+            primeraPulsada.setEmparejada(true);
+            segundaPulsada.setEmparejada(true);
+              comprobarSiTodasEmparejadas();
+        }else{
+            primeraPulsada.setLevantada(true);
+            segundaPulsada.setLevantada(true);
+        }
+    }
+    public void comprobarSiTodasEmparejadas(){
+       // if(Todas las cartas tiene su pareja){
+        guardarGanador();
+        //}
+    }
+    
     public void barajar() {
         Collections.shuffle(ArrayListCartasPar);
         for (Carta it : ArrayListCartasPar) {
@@ -198,11 +217,7 @@ public class Logica  {
     }
 
     ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
-    public Partida getPartida() {
-        return partida;
-    }
-
-    public void contadorPulsaciones() {
+    public void contadorPulsaciones() {//NECESITAMOS RESETEARLAS Y TAMBIEN GUARDARLAS EN LA CLASE PARTIDA
         this.pulsaciones++;
     }
 
@@ -255,21 +270,26 @@ public class Logica  {
     }
 
     public void guardarGanador() {
+        this.nombreGanador = JOptionPane.showInputDialog("Escribe tu nombre");//Recojo el nombre del ganador con un JOptioPanel
+
         if (this.partidaGuardada != null) {//En el caso de que haya acabado un partida que anteriormente hubiera guardado
-            Jugador jugador = new Jugador("nombre", this.partidaGuardada.getNumeroDeMovimientos(), this.partidaGuardada.getTiempoTotalUsado());
+            Jugador jugador = new Jugador(this.nombreGanador, this.partidaGuardada.getNumeroDeMovimientos(), this.partidaGuardada.getTiempoTotalUsado());
             ArrayListJugador.add(jugador);
+
         } else {//En el caso de que haya acabado una partida que acabe de empezar
-            Jugador jugador = new Jugador("nombre", this.partida.getNumeroDeMovimientos(), this.partida.getTiempoTotalUsado());
+            Jugador jugador = new Jugador(this.nombreGanador, this.partida.getNumeroDeMovimientos(), this.partida.getTiempoTotalUsado());
             ArrayListJugador.add(jugador);
 
         }
+        abrirVistaRankingJugadores();
 
     }
-    public void ordenarArrayListGanadores(){
-    
+
+    public void ordenarArrayListGanadores() {
+
     }
-    
-    public void resetearEstadisticas(){
+
+    public void resetearEstadisticas() {
 
         ArrayPartidasGuardadas.clear();
         ArrayListJugador.clear();

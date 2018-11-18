@@ -21,12 +21,17 @@ import javax.swing.Timer;
  * @author dvdsa
  */
 public class Partida extends JPanel {
-
+/*
+    
+    SIEMPRE QUE GUARDEMOS O ACABEMOS UNA PARTIDA ESTA TIENE QUE GUARDAR SU TIEMPO Y SU NUMERO DE PULSACIONES.
+    
+    
+    
+    */
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeMovimientos;
     private JLabel JLcontador = new JLabel("");
-    //private ArrayList <JLabel> cartasSeleccionadas = new ArrayList<>();
     private static int n = 0;
     private Logica logica;
     private int minutos = 0, segundos = 0, tiempoTotalUsado = 0;
