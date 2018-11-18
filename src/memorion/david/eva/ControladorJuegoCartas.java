@@ -29,6 +29,7 @@ public class ControladorJuegoCartas extends MouseAdapter {
         logica.contadorPulsaciones();//Necesitamos pasarle las pulsaciones a la clase partida y que estas vuelvan a 0 al cargar una nueva partida
         logica.voltearCarta((Carta) me.getSource());
         contador++;
+        
         if (contador == 1) {
             primerCartaPulsada=(Carta) me.getSource();
         }
@@ -37,6 +38,7 @@ public class ControladorJuegoCartas extends MouseAdapter {
             logica.comprobarParejas(primerCartaPulsada, segundaCartaPulsada);
             primerCartaPulsada=null;
             segundaCartaPulsada=null;
+            contador=0;
         }
     }
 

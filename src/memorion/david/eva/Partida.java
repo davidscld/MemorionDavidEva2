@@ -6,6 +6,7 @@
 package memorion.david.eva;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,36 +22,65 @@ import javax.swing.Timer;
  * @author dvdsa
  */
 public class Partida extends JPanel {
-/*
+
+    /*
     
     SIEMPRE QUE GUARDEMOS O ACABEMOS UNA PARTIDA ESTA TIENE QUE GUARDAR SU TIEMPO Y SU NUMERO DE PULSACIONES.
     
     
     
-    */
+     */
     private String dificultad, nombrePartida;
     private ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
     private int numeroCartasAncho, numeroCartasLargo, numeroDePartida, numeroDeMovimientos;
+    private JPanel panelDeCartas, panelDeContadores;
     private JLabel JLcontador = new JLabel("");
+    private JLabel JLpulsaciones;
     private static int n = 0;
     private Logica logica;
     private int minutos = 0, segundos = 0, tiempoTotalUsado = 0;
     private Timer tiempo;
-    private boolean partidaGuardada= false;
+    private boolean partidaGuardada = false;
     private int cantidadCartas;
 
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
         this.logica = logica;
-        this.setOpaque(true);
+        this.setOpaque(false);
         this.dificultad = dificultad;
         this.nombrePartida = "Partida " + numeroDePartida;
-        this.setBounds(200, 100, 800, 600);
+        this.setLayout(null);
+        
+        
         calcularDistribucion();
-        this.setLayout(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo));
+        crearPanelContadores();
+        crearPanelDeCartas();
         configurarPanel();
 
+    }
+
+    private void crearPanelDeCartas() {
+      panelDeCartas = new JPanel(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo,5,5));
+      panelDeCartas.setOpaque(false);
+      panelDeCartas.setBounds(70, 70, 850, 800);
+      this.add(panelDeCartas);
+    }
+    private void crearPanelContadores(){
+        Font f = new Font("Cambria",Font.ITALIC,30);
+
+        panelDeContadores = new JPanel(new GridLayout(0,2));
+        JLpulsaciones = new JLabel("Touches: "+numeroDeMovimientos);
+        JLpulsaciones.setFont(f);
+        JLpulsaciones.setForeground(Color.WHITE);
+        JLcontador = new JLabel("Minutes: "+minutos+ " Seconds: "+segundos);
+        JLcontador.setFont(f);
+        JLcontador.setForeground(Color.WHITE);
+        panelDeContadores.setOpaque(false);
+        panelDeContadores.add(JLpulsaciones);
+        panelDeContadores.add(JLcontador);
+        panelDeContadores.setBounds(70, 10, 600, 50);
+        this.add(panelDeContadores);
     }
 
     public String getDificultad() {
@@ -68,8 +98,6 @@ public class Partida extends JPanel {
     public void setPartidaGuardada(boolean partidaGuardada) {
         this.partidaGuardada = partidaGuardada;
     }
-    
-    
 
     private void calcularDistribucion() {
 
@@ -77,17 +105,17 @@ public class Partida extends JPanel {
             this.numeroCartasAncho = 3;
             this.numeroCartasLargo = 2;
             cantidadCartas = 6;
-            this.setBounds(650, 100, 900, 800);
+            this.setBounds(450, 50, 900, 900);
 
         } else if (this.dificultad.equals("Medium")) {
             this.numeroCartasAncho = 2;
             this.numeroCartasLargo = 5;
-            this.setBounds(500, 50, 900, 800);
+            this.setBounds(450, 50, 900, 900);
             cantidadCartas = 10;
         } else {
             this.numeroCartasAncho = 4;
             this.numeroCartasLargo = 4;
-            this.setBounds(500, 50, 1000, 800);
+            this.setBounds(450, 50, 1000, 1000);
             cantidadCartas = 16;
         }
     }
@@ -112,7 +140,7 @@ public class Partida extends JPanel {
 
         Collections.shuffle(cartasSeleccionadas);
         for (Carta it : cartasSeleccionadas) {
-            this.add(it);
+            panelDeCartas.add(it);
         }
 
     }
@@ -120,6 +148,7 @@ public class Partida extends JPanel {
     public String getNombrePartida() {
         return nombrePartida;
     }
+    
 
     public JLabel JLabeltiempo() {
         crearContadorTiempo();
@@ -155,6 +184,9 @@ public class Partida extends JPanel {
 
     public void setNumeroDeMovimientos(int numeroDeMovimientos) {
         this.numeroDeMovimientos = numeroDeMovimientos;
+        JLpulsaciones.setText("Touches: "+numeroDeMovimientos);
+        JLpulsaciones.repaint();
+        
     }
 
     public int getTiempoTotalUsado() {

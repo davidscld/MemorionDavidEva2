@@ -6,11 +6,14 @@
 package memorion.david.eva;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -30,6 +33,7 @@ public class Logica {
     private boolean existe = false;
     private int posicion = 0, pulsaciones = 0;
     private String nombreGanador = " ";
+    private Timer volteo;
 
     public Logica() {
         crearArrayListDeCartasImpar();
@@ -74,13 +78,13 @@ public class Logica {
 
     private void abrirPartidaEmpezada(Partida partida) {
         this.partida = null;
+        this.partidaGuardada = null;
         this.partidaGuardada = partida;
-        VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
-        System.out.println("Numero de cartas " + partida.getCantidadCartas());
-        partida.setBackground(Color.yellow);
+        VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(this.partidaGuardada);
+        System.out.println("Numero de cartas " + this.partidaGuardada.getCantidadCartas());
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
-        this.partidaGuardada = null;
+
     }
 
     public void abrirVistaPartidasGuardadas() {
@@ -192,13 +196,15 @@ public class Logica {
     public void comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
 
         if (primeraPulsada.getRutaAnverso().equals(segundaPulsada.getRutaAnverso())) {
-            System.out.println("TODAS EMPAREJASD");
+            System.out.println("PAREJA EMPAREJADA");
             primeraPulsada.setEmparejada(true);
             segundaPulsada.setEmparejada(true);
             comprobarSiTodasEmparejadas();
         } else {
+
             primeraPulsada.setLevantada(false);
             segundaPulsada.setLevantada(false);
+            //voltearAlReves(primeraPulsada, segundaPulsada);
         }
     }
 
@@ -206,7 +212,7 @@ public class Logica {
 
         boolean todasEmparejadas = true;
 
-        if (this.partida == null) {//En el caso de que este acabando una partida que acabe de empezar
+        if (this.partida != null) {//En el caso de que este acabando una partida que acabe de empezar
             for (Carta it : this.partida.getCartasSeleccionadas()) {
                 if (!it.isEmparejada()) {
                     todasEmparejadas = false;
@@ -239,9 +245,34 @@ public class Logica {
 
     }
 
-    ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
+    private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
+        System.out.println("TIMER");
+        this.volteo = new javax.swing.Timer(3000, new ActionListener() {
+            int con = 0;
+
+            public void actionPerformed(ActionEvent ae) {
+                primeraPulsada.ponerRerverso();
+                segundaPulsada.ponerRerverso();
+                volteo.stop();
+
+            }
+
+        });
+        volteo.start();
+        volteo.setRepeats(true);
+        while (true);
+    }
+
+///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
     public void contadorPulsaciones() {//NECESITAMOS RESETEARLAS Y TAMBIEN GUARDARLAS EN LA CLASE PARTIDA
-        this.pulsaciones++;
+        if (partida == null) {
+            this.pulsaciones++;
+            partidaGuardada.setNumeroDeMovimientos(pulsaciones);
+        } else {
+            this.pulsaciones++;
+            partida.setNumeroDeMovimientos(pulsaciones);
+        }
+
     }
 
     public void guardarPartida() {
@@ -262,6 +293,9 @@ public class Logica {
                 this.partida.setPartidaGuardada(true);
                 ArrayPartidasGuardadas.add(this.partida);
 
+            } else {
+                ArrayPartidasGuardadas.add(this.partidaGuardada);
+                ArrayPartidasGuardadas.remove(posicion);
             }
         }
 
@@ -299,6 +333,7 @@ public class Logica {
         if (this.partidaGuardada != null) {//En el caso de que haya acabado un partida que anteriormente hubiera guardado
             Jugador jugador = new Jugador(this.nombreGanador, this.partidaGuardada.getNumeroDeMovimientos(), this.partidaGuardada.getTiempoTotalUsado());
             ArrayListJugador.add(jugador);
+            
 
         } else {//En el caso de que haya acabado una partida que acabe de empezar
             Jugador jugador = new Jugador(this.nombreGanador, this.partida.getNumeroDeMovimientos(), this.partida.getTiempoTotalUsado());
@@ -318,4 +353,5 @@ public class Logica {
         ArrayPartidasGuardadas.clear();
         ArrayListJugador.clear();
     }
+
 }

@@ -31,7 +31,7 @@ public class VistaRankingJugadores extends JPanel {
         this.logica = logica;
         configurarVentana();
         crearListado();
-        crearListado();
+        
     }
 
     private void configurarVentana() {
@@ -52,7 +52,7 @@ public class VistaRankingJugadores extends JPanel {
         if (logica.getArrayListJugador().isEmpty()) {
             System.out.println("VACIO");
         } else {
-
+            
             //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO
             int numeroDeFilas = logica.getArrayListJugador().size();
             panelCentral.setLayout(new GridLayout(numeroDeFilas, 1));
@@ -60,9 +60,9 @@ public class VistaRankingJugadores extends JPanel {
             //RECORRO EL ARRAYLIST Y A MEDIDA VOY SACANDO NOMBRE Y N.MOVIMIENTOS DEL JUGADOR Y LOS MUESTRO.
             for (Jugador it : logica.getArrayListJugador()) {
                 nombre = new JLabel(it.getNombre());
-                this.add(nombre);
+                panelCentral.add(nombre);
                 numeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
-                this.add(numeroDeMovimientos);
+                panelCentral.add(numeroDeMovimientos);
             }
         }
 
@@ -70,7 +70,7 @@ public class VistaRankingJugadores extends JPanel {
 
     private void crearPanelCentral() {
         panelCentral = new JPanel();//Hay que asignarle su gridLayout
-        panelCentral.setBounds(50, 50, 500, 700);
+        panelCentral.setBounds(50, 5, 500, 700);
         panelCentral.setOpaque(false);
         this.add(panelCentral);
     }
