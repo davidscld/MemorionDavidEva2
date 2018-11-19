@@ -201,10 +201,10 @@ public class Logica {
             segundaPulsada.setEmparejada(true);
             comprobarSiTodasEmparejadas();
         } else {
-
+            voltearAlReves(primeraPulsada, segundaPulsada);
             primeraPulsada.setLevantada(false);
             segundaPulsada.setLevantada(false);
-            //voltearAlReves(primeraPulsada, segundaPulsada);
+            
         }
     }
 
@@ -248,19 +248,18 @@ public class Logica {
     private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
         System.out.println("TIMER");
         this.volteo = new Timer(3000, new ActionListener() {
-            int con = 0;
-
+            @Override
             public void actionPerformed(ActionEvent ae) {
+                System.out.println("Entra en el action performed");
                 primeraPulsada.ponerRerverso();
                 segundaPulsada.ponerRerverso();
                 volteo.stop();
-
             }
 
         });
+        System.out.println("sale del action perdformed");
         volteo.start();
         volteo.setRepeats(true);
-        while (true);
     }
 
 ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
