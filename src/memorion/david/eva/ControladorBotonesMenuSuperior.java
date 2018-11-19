@@ -29,7 +29,7 @@ public class ControladorBotonesMenuSuperior implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String opcion = ((JMenuItem) ae.getSource()).getText();
         switch (opcion) {
-            case "Inicio":
+            case "Home":
                 logica.abrirVistaPrincipal();
                 break;
             case "Play":
@@ -39,9 +39,12 @@ public class ControladorBotonesMenuSuperior implements ActionListener {
                 logica.abrirVistaPartidasGuardadas();
                 break;
             case "Save game": //guardar partida
-
                 logica.guardarPartida();
                 break;
+            case "About":
+                logica.abrirAcerdaDe();
+                break;
+                
         }
     }
 

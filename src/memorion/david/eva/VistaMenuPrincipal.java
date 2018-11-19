@@ -61,6 +61,7 @@ public class VistaMenuPrincipal extends JPanel {
         JBpGuardadas.setBounds(x, 400, ancho, alto);
         JBpGuardadas.setFont(f);
         this.add(JBpGuardadas);
+      
         //BOTON RANKING
         JBranking = new JButton("Score");
         JBranking.setBounds(x, 500, ancho, alto);
@@ -71,6 +72,7 @@ public class VistaMenuPrincipal extends JPanel {
         JBresetear.setBounds(x, 600, ancho, alto);
         JBresetear.setFont(f);
         this.add(JBresetear);
+        
         
 
     }

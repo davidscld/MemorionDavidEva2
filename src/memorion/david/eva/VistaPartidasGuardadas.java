@@ -35,6 +35,7 @@ public class VistaPartidasGuardadas extends JPanel {
         configurarVentana();
         this.columnas = 1;
         this.filas = 12;
+        
 
     }
 
@@ -44,6 +45,7 @@ public class VistaPartidasGuardadas extends JPanel {
         this.setLayout(null);
         configurarPanelCentral();
         mostrarPartidas();
+        this.repaint();
 
     }
 

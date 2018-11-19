@@ -24,6 +24,7 @@ public class Logica {
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
     private VistaMenuDificultad vistaMenuDificultad;
+    private VistaJuegoCartas vistaJuegoCartas;
     private Partida partida, partidaGuardada;
     private ArrayList<Carta> ArrayListCartasPar = new ArrayList<>();
     private ArrayList<Carta> ArrayListCartasImpar = new ArrayList<>();
@@ -71,7 +72,7 @@ public class Logica {
         this.partida = null;
         this.pulsaciones = 0;
         this.partida = new Partida(dificultad, this);
-        VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(partida);
+        vistaJuegoCartas = new VistaJuegoCartas(partida);
         vista.crearPanel(vistaJuegoCartas);
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
     }
@@ -80,9 +81,10 @@ public class Logica {
         this.partida = null;
         this.partidaGuardada = null;
         this.partidaGuardada = partida;
-        VistaJuegoCartas vistaJuegoCartas = new VistaJuegoCartas(this.partidaGuardada);
+        vistaJuegoCartas = new VistaJuegoCartas(this.partidaGuardada);
         System.out.println("Numero de cartas " + this.partidaGuardada.getCantidadCartas());
         vista.crearPanel(vistaJuegoCartas);
+        vista.repaint();
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH); //Maximiza la pantalla 
 
     }
@@ -90,9 +92,15 @@ public class Logica {
     public void abrirVistaPartidasGuardadas() {
         this.partida = null;
         VistaPartidasGuardadas vistaPartidasGuardadas = new VistaPartidasGuardadas(this);
+        
         vista.crearPanel(vistaPartidasGuardadas);
+        vista.repaint();
         vista.setSize(700, 925);
 
+    }
+    
+    public void abrirAcerdaDe(){
+                 JOptionPane.showMessageDialog(null, "Creado por David Sanchez y Eva Chico");
     }
 //////////////////////////////////////CARGAR ARRAYLIST////////////////////////////////////////////////////////
 
@@ -247,9 +255,8 @@ public class Logica {
 
     private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
         System.out.println("TIMER");
-        this.volteo = new javax.swing.Timer(3000, new ActionListener() {
-            int con = 0;
-
+        this.volteo = new Timer(3000, new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent ae) {
                 primeraPulsada.ponerRerverso();
                 segundaPulsada.ponerRerverso();
@@ -260,7 +267,6 @@ public class Logica {
         });
         volteo.start();
         volteo.setRepeats(true);
-        while (true);
     }
 
 ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////7
@@ -304,10 +310,12 @@ public class Logica {
     public void cargarPartidaGuardada(String nombrePartida) {
         Partida partidaEscogida = null;
         for (Partida it : ArrayPartidasGuardadas) {
+            System.out.println(it.getNombrePartida()+" : "+nombrePartida);
             if (it.getNombrePartida().equals(nombrePartida)) {
                 partidaEscogida = it;
             }
         }
+        System.out.println(partidaEscogida.getNombrePartida());
 
         abrirPartidaEmpezada(partidaEscogida);
     }
