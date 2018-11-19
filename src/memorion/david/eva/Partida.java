@@ -57,6 +57,7 @@ public class Partida extends JPanel {
         crearPanelContadores();
         crearPanelDeCartas();
         configurarPanel();
+        //crearContadorTiempo();
 
     }
 
@@ -157,24 +158,27 @@ public class Partida extends JPanel {
     }
 
     public void crearContadorTiempo() {
+        System.out.println("Enta en el metodo crear contador tiempo");
         this.tiempo = new javax.swing.Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (segundos == 59) {
                     minutos++;
                     segundos = 0;
+                    System.out.println("Enta en minutos y segundos");
                 } else {
+                    System.out.println("Entra en segundos");
                     segundos++;
                 }
+                System.out.println("sale del if else y y repinta");
                 JLcontador.setText(minutos + ":" + segundos);
-                System.out.println("Minutos: " + minutos + "Segundos " + segundos);
-
+                JLcontador.repaint();
             }
 
         });
         tiempo.start();
         tiempo.setRepeats(false);
-        while (true);
+        while(true);
 
     }
 
