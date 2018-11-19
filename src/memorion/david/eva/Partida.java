@@ -173,6 +173,7 @@ public class Partida extends JPanel {
                 System.out.println("sale del if else y y repinta");
                 JLcontador.setText("Minutes: "+minutos+ " Seconds: "+segundos);
                 JLcontador.repaint();
+                System.out.println("");
             }
 
         });
