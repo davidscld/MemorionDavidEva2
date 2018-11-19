@@ -204,7 +204,7 @@ public class Logica {
 
             primeraPulsada.setLevantada(false);
             segundaPulsada.setLevantada(false);
-            voltearAlReves(primeraPulsada, segundaPulsada);
+            //voltearAlReves(primeraPulsada, segundaPulsada);
         }
     }
 
@@ -247,7 +247,7 @@ public class Logica {
 
     private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
         System.out.println("TIMER");
-        this.volteo = new javax.swing.Timer(3000, new ActionListener() {
+        this.volteo = new Timer(3000, new ActionListener() {
             int con = 0;
 
             public void actionPerformed(ActionEvent ae) {
