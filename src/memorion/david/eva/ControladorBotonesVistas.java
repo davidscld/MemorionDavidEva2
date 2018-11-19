@@ -24,7 +24,7 @@ Logica logica;
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion = ((JButton) ae.getSource()).getText();
-        System.out.println(opcion);
+        
         switch (opcion) {
             //Casos de la VistaMenuPrincial
             case "Play":

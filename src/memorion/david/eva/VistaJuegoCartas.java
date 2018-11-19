@@ -29,7 +29,7 @@ public class VistaJuegoCartas extends JPanel {
         this.partida = partida;
         this.add(partida);
         this.setLayout(null);
-        //this.setBounds(10,100,800,1000);
+      
      
 
     }

@@ -24,24 +24,24 @@ public class VistaRankingJugadores extends JPanel {
     private Logica logica;
 
     private JPanel panelCentral;
-    private JLabel nombre, numeroDeMovimientos;
+    private JLabel JLnombre, JLnumeroDeMovimientos;
     private URL url = getClass().getResource("/assets/fondoPartidasJugadas.jpg");
     private Image imagenFondo = new ImageIcon(url).getImage();
+
     public VistaRankingJugadores(Logica logica) {
         this.logica = logica;
         configurarVentana();
         crearListado();
-        
+
     }
 
     private void configurarVentana() {
         this.setSize(720, 905);
-
         this.setLayout(null);
-        crearPanelCentral();
 
     }
-        public void paint(Graphics g) {
+
+    public void paint(Graphics g) {
         g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
         this.setOpaque(false);
         super.paint(g);
@@ -49,27 +49,24 @@ public class VistaRankingJugadores extends JPanel {
 
     private void crearListado() {
 
-        if (logica.getArrayListJugador().isEmpty()) {
-            System.out.println("VACIO");
-        } else {
-            
+        if (!logica.getArrayListJugador().isEmpty()) {
             //RECOJO Y ASIGNO LA CANTIDAD DE FILAS QUE HABRA, SABIENDO EL NUMERO DE JUGADORES QUE HAN GANADO
             int numeroDeFilas = logica.getArrayListJugador().size();
-            panelCentral.setLayout(new GridLayout(numeroDeFilas, 1));
+            crearPanelCentral(numeroDeFilas);
 
             //RECORRO EL ARRAYLIST Y A MEDIDA VOY SACANDO NOMBRE Y N.MOVIMIENTOS DEL JUGADOR Y LOS MUESTRO.
             for (Jugador it : logica.getArrayListJugador()) {
-                nombre = new JLabel(it.getNombre());
-                panelCentral.add(nombre);
-                numeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
-                panelCentral.add(numeroDeMovimientos);
+                JLnombre = new JLabel(it.getNombre());
+                panelCentral.add(JLnombre);
+                JLnumeroDeMovimientos = new JLabel("" + it.getNumeroMovimientos());
+                panelCentral.add(JLnumeroDeMovimientos);
             }
         }
 
     }
 
-    private void crearPanelCentral() {
-        panelCentral = new JPanel();//Hay que asignarle su gridLayout
+    private void crearPanelCentral(int numeroDeFilas) {
+        panelCentral = new JPanel(new GridLayout(numeroDeFilas, 0));//Hay que asignarle su gridLayout
         panelCentral.setBounds(50, 5, 500, 700);
         panelCentral.setOpaque(false);
         this.add(panelCentral);
