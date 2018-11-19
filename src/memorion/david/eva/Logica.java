@@ -204,7 +204,7 @@ public class Logica {
 
             primeraPulsada.setLevantada(false);
             segundaPulsada.setLevantada(false);
-            //voltearAlReves(primeraPulsada, segundaPulsada);
+            voltearAlReves(primeraPulsada, segundaPulsada);
         }
     }
 
