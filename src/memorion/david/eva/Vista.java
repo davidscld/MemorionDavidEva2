@@ -20,13 +20,14 @@ public class Vista extends JFrame {
     private MenuSuperior menuSuperior;
     private JPanel panel;
     private Logica logica;
-
+    private ControladorHuevoPascua controladorHuevoPascua;
     
     public Vista(JPanel panel1,Logica logica) {
         this.setSize(700, 925);
         this.panel=panel1;
         this.add(panel);
         this.logica=logica;
+        configurarHuevoPascua();
         configuracionMenuSuperior();
         configurarCierreAplicacion();
     }
@@ -58,5 +59,10 @@ public class Vista extends JFrame {
        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir?",
                 "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
             System.exit(0);
+    }
+
+    private void configurarHuevoPascua() {
+        controladorHuevoPascua = new ControladorHuevoPascua(logica);
+        this.addKeyListener(controladorHuevoPascua);
     }
 }
