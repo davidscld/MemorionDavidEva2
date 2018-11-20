@@ -19,14 +19,10 @@ public class MemorionDavidEva {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
+           
         Logica logica=new Logica();
         
-        /*
-        Vista vista = new Vista();
-        vista.setSize(720, 925);
-        vista.setVisible(true);*/
+       
 
     }
 
