@@ -158,7 +158,6 @@ public class Partida extends JPanel {
     }
 
     public void crearContadorTiempo() {
-        System.out.println("Enta en el metodo crear contador tiempo");
         this.tiempo = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

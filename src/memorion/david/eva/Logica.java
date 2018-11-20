@@ -201,18 +201,20 @@ public class Logica {
         carta.setIcon(imagenCartaAnverso);
     }
 
-    public void comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
+    public boolean comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
 
         if (primeraPulsada.getRutaAnverso().equals(segundaPulsada.getRutaAnverso())) {
             System.out.println("PAREJA EMPAREJADA");
             primeraPulsada.setEmparejada(true);
             segundaPulsada.setEmparejada(true);
             comprobarSiTodasEmparejadas();
+            return true;
         } else {
 
             primeraPulsada.setLevantada(false);
             segundaPulsada.setLevantada(false);
             voltearAlReves(primeraPulsada, segundaPulsada);
+            return false;
         }
     }
 
@@ -254,7 +256,7 @@ public class Logica {
     }
 
     private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
-        System.out.println("TIMER");
+        
         this.volteo = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
