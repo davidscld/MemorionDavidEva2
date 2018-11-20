@@ -42,6 +42,7 @@ public class Partida extends JPanel {
     private Timer tiempo;
     private boolean partidaGuardada = false;
     private int cantidadCartas;
+    private ControladorHuevoPascua controladorHuevoPascua;
 
     public Partida(String dificultad, Logica logica) {
         n++;
@@ -51,30 +52,31 @@ public class Partida extends JPanel {
         this.dificultad = dificultad;
         this.nombrePartida = "Partida " + numeroDePartida;
         this.setLayout(null);
-        
-        
+
         calcularDistribucion();
         crearPanelContadores();
         crearPanelDeCartas();
         configurarPanel();
-        crearContadorTiempo();
+       
+        configurarHuevoPascua();
 
     }
 
     private void crearPanelDeCartas() {
-      panelDeCartas = new JPanel(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo,5,5));
-      panelDeCartas.setOpaque(false);
-      panelDeCartas.setBounds(70, 70, 850, 800);
-      this.add(panelDeCartas);
+        panelDeCartas = new JPanel(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 5, 5));
+        panelDeCartas.setOpaque(false);
+        panelDeCartas.setBounds(70, 70, 850, 800);
+        this.add(panelDeCartas);
     }
-    private void crearPanelContadores(){
-        Font f = new Font("Cambria",Font.ITALIC,30);
 
-        panelDeContadores = new JPanel(new GridLayout(0,2));
-        JLpulsaciones = new JLabel("Touches: "+numeroDeMovimientos);
+    private void crearPanelContadores() {
+        Font f = new Font("Cambria", Font.ITALIC, 30);
+
+        panelDeContadores = new JPanel(new GridLayout(0, 2));
+        JLpulsaciones = new JLabel("Touches: " + numeroDeMovimientos);
         JLpulsaciones.setFont(f);
         JLpulsaciones.setForeground(Color.WHITE);
-        JLcontador = new JLabel("Minutes: "+minutos+ " Seconds: "+segundos);
+        JLcontador = new JLabel("Minutes: " + minutos + " Seconds: " + segundos);
         JLcontador.setFont(f);
         JLcontador.setForeground(Color.WHITE);
         panelDeContadores.setOpaque(false);
@@ -149,7 +151,6 @@ public class Partida extends JPanel {
     public String getNombrePartida() {
         return nombrePartida;
     }
-    
 
     public JLabel JLabeltiempo() {
         crearContadorTiempo();
@@ -167,7 +168,7 @@ public class Partida extends JPanel {
                 } else {
                     segundos++;
                 }
-                JLcontador.setText("Minutes: "+minutos+ " Seconds: "+segundos);
+                JLcontador.setText("Minutes: " + minutos + " Seconds: " + segundos);
                 JLcontador.repaint();
             }
 
@@ -183,14 +184,19 @@ public class Partida extends JPanel {
 
     public void setNumeroDeMovimientos(int numeroDeMovimientos) {
         this.numeroDeMovimientos = numeroDeMovimientos;
-        JLpulsaciones.setText("Touches: "+numeroDeMovimientos);
+        JLpulsaciones.setText("Touches: " + numeroDeMovimientos);
         JLpulsaciones.repaint();
-        
+
     }
 
     public int getTiempoTotalUsado() {
         this.tiempoTotalUsado = this.minutos * 60 + this.segundos;
         return tiempoTotalUsado;
+    }
+
+    private void configurarHuevoPascua() {
+        controladorHuevoPascua = new ControladorHuevoPascua(logica);
+        JLpulsaciones.addMouseListener(controladorHuevoPascua);
     }
 
 }

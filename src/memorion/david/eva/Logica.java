@@ -8,8 +8,11 @@ package memorion.david.eva;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -92,15 +95,15 @@ public class Logica {
     public void abrirVistaPartidasGuardadas() {
         this.partida = null;
         VistaPartidasGuardadas vistaPartidasGuardadas = new VistaPartidasGuardadas(this);
-        
+
         vista.crearPanel(vistaPartidasGuardadas);
         vista.repaint();
         vista.setSize(700, 925);
 
     }
-    
-    public void abrirAcerdaDe(){
-                 JOptionPane.showMessageDialog(null, "Creado por David Sanchez y Eva Chico");
+
+    public void abrirAcerdaDe() {
+        JOptionPane.showMessageDialog(null, "Creado por David Sanchez y Eva Chico");
     }
 //////////////////////////////////////CARGAR ARRAYLIST////////////////////////////////////////////////////////
 
@@ -256,7 +259,7 @@ public class Logica {
     }
 
     private void voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) {
-        
+
         this.volteo = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -312,7 +315,7 @@ public class Logica {
     public void cargarPartidaGuardada(String nombrePartida) {
         Partida partidaEscogida = null;
         for (Partida it : ArrayPartidasGuardadas) {
-            System.out.println(it.getNombrePartida()+" : "+nombrePartida);
+            System.out.println(it.getNombrePartida() + " : " + nombrePartida);
             if (it.getNombrePartida().equals(nombrePartida)) {
                 partidaEscogida = it;
             }
@@ -343,7 +346,6 @@ public class Logica {
         if (this.partidaGuardada != null) {//En el caso de que haya acabado un partida que anteriormente hubiera guardado
             Jugador jugador = new Jugador(this.nombreGanador, this.partidaGuardada.getNumeroDeMovimientos(), this.partidaGuardada.getTiempoTotalUsado());
             ArrayListJugador.add(jugador);
-            
 
         } else {//En el caso de que haya acabado una partida que acabe de empezar
             Jugador jugador = new Jugador(this.nombreGanador, this.partida.getNumeroDeMovimientos(), this.partida.getTiempoTotalUsado());
@@ -363,5 +365,13 @@ public class Logica {
         ArrayPartidasGuardadas.clear();
         ArrayListJugador.clear();
     }
+//////////////////////////////METODOS NO AGRUPABLES///////////////
 
+    public void huevoDePascua() {     
+        String rutaCancion = "C:/Mi Musica/AC_DC/Back in Black/06 Back in Black.mp3";
+        Media media = new Media(new File(rutaCancion).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
+
+    }
 }

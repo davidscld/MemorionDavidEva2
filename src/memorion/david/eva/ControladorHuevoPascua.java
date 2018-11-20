@@ -7,12 +7,14 @@ package memorion.david.eva;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author dvdsa
  */
-public class ControladorHuevoPascua extends KeyAdapter {
+public class ControladorHuevoPascua extends MouseAdapter {
 
     private Logica logica;
     private static int contador = 0;
@@ -22,15 +24,11 @@ public class ControladorHuevoPascua extends KeyAdapter {
     }
 
     @Override
-    public void keyPressed(KeyEvent ke) {
-        if (KeyEvent.VK_6 == ke.getKeyCode()) {
-            contador++;
-            if (contador == 6) {
+    public void mouseClicked(MouseEvent me) {
 
-            }
-        } else {
-
+        contador++;
+        if (contador == 6) {
+            logica.huevoDePascua();
         }
     }
-
 }
