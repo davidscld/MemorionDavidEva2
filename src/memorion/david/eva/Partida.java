@@ -54,6 +54,7 @@ public class Partida extends JPanel {
         this.setLayout(null);
 
         calcularDistribucion();
+        crearContadorTiempo();
         crearPanelContadores();
         crearPanelDeCartas();
         configurarPanel();
