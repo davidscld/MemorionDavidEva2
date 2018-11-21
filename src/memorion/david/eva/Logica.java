@@ -305,9 +305,18 @@ public class Logica {
                 ArrayPartidasGuardadas.add(this.partida);
 
             } else {
-                ArrayPartidasGuardadas.add(this.partidaGuardada);
+                ArrayPartidasGuardadas.add(this.partida);
                 ArrayPartidasGuardadas.remove(posicion);
             }
+        } else {
+            for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
+                if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
+                    posicion = i;
+
+                }
+            }
+            ArrayPartidasGuardadas.add(this.partidaGuardada);
+            ArrayPartidasGuardadas.remove(posicion);
         }
 
     }
@@ -367,7 +376,7 @@ public class Logica {
     }
 //////////////////////////////METODOS NO AGRUPABLES///////////////
 
-    public void huevoDePascua() {     
+    public void huevoDePascua() {
         String rutaCancion = "C:/Mi Musica/AC_DC/Back in Black/06 Back in Black.mp3";
         Media media = new Media(new File(rutaCancion).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
