@@ -9,8 +9,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javax.swing.ImageIcon;
@@ -24,6 +27,7 @@ import javax.swing.Timer;
  */
 public class Logica {
 
+    private Timer tiempo;
     private Vista vista;
     private VistaMenuPrincipal vistaMenuPrincipal;
     private VistaMenuDificultad vistaMenuDificultad;
@@ -34,6 +38,8 @@ public class Logica {
     private static ArrayList<Jugador> ArrayListJugador = new ArrayList<>();
     private static ArrayList<Partida> ArrayPartidasGuardadas = new ArrayList<>();
     private ImageIcon imagenCartaAnverso;
+    private ImageIcon imagenCartaCarga ;
+
     private boolean existe = false;
     private int posicion = 0, pulsaciones = 0;
     private String nombreGanador = " ";
@@ -95,7 +101,6 @@ public class Logica {
     public void abrirVistaPartidasGuardadas() {
         this.partida = null;
         VistaPartidasGuardadas vistaPartidasGuardadas = new VistaPartidasGuardadas(this);
-
         vista.crearPanel(vistaPartidasGuardadas);
         vista.repaint();
         vista.setSize(700, 925);
@@ -199,11 +204,19 @@ public class Logica {
 //////////////////////////METODOS CARTAS////////////////////////////////////7
 
     public void voltearCarta(Carta carta) {
-        carta.setLevantada(true);
-        imagenCartaAnverso = new ImageIcon(carta.getRutaAnverso());
-        carta.setIcon(imagenCartaAnverso);
+        try {
+            imagenCartaCarga = new ImageIcon(this.getClass().getResource("/assets/portadaLazarillo.jpg"));
+            carta.setIcon(imagenCartaCarga);
+            Thread.sleep((long)1000);
+            carta.setLevantada(true);
+            imagenCartaAnverso = new ImageIcon(carta.getRutaAnverso());
+            carta.setIcon(imagenCartaAnverso);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+  
     public boolean comprobarParejas(Carta primeraPulsada, Carta segundaPulsada) {
 
         if (primeraPulsada.getRutaAnverso().equals(segundaPulsada.getRutaAnverso())) {
@@ -377,10 +390,6 @@ public class Logica {
 //////////////////////////////METODOS NO AGRUPABLES///////////////
 
     public void huevoDePascua() {
-        String rutaCancion = "C:/Mi Musica/AC_DC/Back in Black/06 Back in Black.mp3";
-        Media media = new Media(new File(rutaCancion).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
 
     }
 }

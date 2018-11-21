@@ -21,7 +21,7 @@ public class ControladorJuegoCartas extends MouseAdapter {
     private static int contador = 0;
     private static Carta primerCartaPulsada, segundaCartaPulsada;
     private boolean cartasEmparejadas = true;
-    private Timer timer;
+    private Timer timer, tiempo;
 
     public ControladorJuegoCartas(Logica logica) {
         this.logica = logica;
@@ -34,13 +34,15 @@ public class ControladorJuegoCartas extends MouseAdapter {
         contador++;
 
         if (contador == 1) {
+           
+           // logica.cargarAnimacion((Carta) me.getSource());
             logica.contadorPulsaciones();//Necesitamos pasarle las pulsaciones a la clase partida y que estas vuelvan a 0 al cargar una nueva partida
-
             logica.voltearCarta((Carta) me.getSource());
             primerCartaPulsada = (Carta) me.getSource();
 
         }
         if (contador == 2) {//En el caso de que haya pulsado dos cartas
+           //    logica.cargarAnimacion((Carta) me.getSource());
             logica.contadorPulsaciones();//Necesitamos pasarle las pulsaciones a la clase partida y que estas vuelvan a 0 al cargar una nueva partida
             logica.voltearCarta((Carta) me.getSource());
             segundaCartaPulsada = (Carta) me.getSource();
@@ -67,5 +69,6 @@ public class ControladorJuegoCartas extends MouseAdapter {
         timer.start();
         timer.setRepeats(true);
     }
+
 
 }
