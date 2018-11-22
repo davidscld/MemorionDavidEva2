@@ -13,18 +13,28 @@ import javax.swing.JMenuItem;
 /**
  *
  * @author dvdsa
+ * 
+ * Implementa ActionListener para que paodamos pulsar a las opciones.
  */
 public class ControladorBotonesMenuSuperior implements ActionListener {
 
     private Logica logica;
   
-
+    /**
+     * ControladorBotonesMenuSuperior(Logica logica)
+     * El controlador se crea en el menuSuperios y este envia la logica.
+     */
     public ControladorBotonesMenuSuperior(Logica logica) {
         this.logica = logica;
-       
     }
 
-    /*Error en los menus*/
+    /**
+     * public void actionPerformed(ActionEvent ae)
+     * te envia la opcion del menu que has pulsado 
+     * SE guarda el texto en un String y se crea un switch-casa para saber 
+     * cual es la opcion que se ha pulsado y llamar a el metodo correspondiente
+     * de la calse logica.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion = ((JMenuItem) ae.getSource()).getText();

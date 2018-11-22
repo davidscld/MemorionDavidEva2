@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 /**
  *
  * @author dvdsa
+ * 
+ * Clase que extiende de JPanel
  */
 public class VistaMenuDificultad extends JPanel {
     private MenuSuperior menuSuperior;
@@ -27,6 +29,13 @@ public class VistaMenuDificultad extends JPanel {
     private ControladorBotonesVistas controladorBotonesVistas;
     private Logica logica;
     
+    /**
+     *VistaMenuDificultad(Logica logica)
+     * Constructor que se crea en el metodo correspondiente de la logica y que 
+     * envia la logica .
+     * Este constructor guarda la logica que se le ha enviado y llama a los metodos
+     * configurarBotonoes() y  configurarVentana().
+     */
     
     public VistaMenuDificultad(Logica logica) {
 
@@ -35,7 +44,12 @@ public class VistaMenuDificultad extends JPanel {
         configurarVentana();
         
     }
-
+    /**
+     * configurarVentana()
+     * Es la configuracion de la clase en si que es un JPanel dandole una imagen
+     * un tamaño.
+     */
+    
     private void configurarVentana() {
         this.setSize(720, 925);
         
@@ -46,6 +60,12 @@ public class VistaMenuDificultad extends JPanel {
         JLfondo.setBounds(0, -30, 700, 900);
         this.add(JLfondo);
     }
+    
+    /**
+     * configurarBotonoes()
+     * Metodo que configura los botones que tiene esta clase con un tamaño
+     * una clase de letra, su texto y lo añade al Jpanel de esta clase.
+     */
 
     private void configurarBotonoes() {
         int alto = 60;
@@ -72,7 +92,9 @@ public class VistaMenuDificultad extends JPanel {
         //Metodo que asigna los action
         crearActionJButton();
     }
-
+    /**
+     * NO SE UTILIZA
+     */
     private void configurarTitulo() {
         //Crear titulo
         LBtitulo = new Label("Level", Label.CENTER);
@@ -81,7 +103,13 @@ public class VistaMenuDificultad extends JPanel {
         LBtitulo.setBackground(null);
         this.add(LBtitulo);
     }
-
+    
+    /**
+     * crearActionJButton()
+     * creamos el controladorBotonesVista y le enviamos la logica
+     * y añadimos el actionListener a cada boton para que cuando pulsemos
+     * uno sepa cual es.
+     */
     private void crearActionJButton() {
         controladorBotonesVistas = new ControladorBotonesVistas(logica);
         JBdifAlta.addActionListener(controladorBotonesVistas);

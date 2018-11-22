@@ -14,12 +14,15 @@ package memorion.david.eva;
 public class MemorionDavidEva {
 
     /**
-     * La logica tiene que tener acceso a la vista
-     *
-     * @param args the command line arguments
+     * Programa Memorion. 
+     * juego de cartas con tres niveles
+     * 
      */
     public static void main(String[] args) {
-           
+        /**
+        *En el main lo unico que vamos a hacer es crear la instancia de la 
+        * clase logica
+        */
         Logica logica=new Logica();
         
        

@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * a
- *
- * @author dvdsa
+ *@author dvdsa
+ * 
+ * Clase que extiende de JPanel.
  */
 public class VistaMenuPrincipal extends JPanel {
 
@@ -26,6 +26,13 @@ public class VistaMenuPrincipal extends JPanel {
     private ImageIcon IMGimagenFondo;
     private ControladorBotonesVistas controladorBotonesVistas;
     private Logica logica;
+    /**
+     * VistaMenuPrincipal(Logica logica)
+     * Constructor que se ejecuta en la logica cuando creamos la clase 
+     * VistaMenuPrincipal y nos envia la logica.
+     * Este constructor llama a los metodos configurarBotonoes(),
+     * configurarVentana() y crearActionJButton()
+     */
     public VistaMenuPrincipal(Logica logica) {
         this.logica = logica;
         configurarBotonoes();
@@ -34,6 +41,10 @@ public class VistaMenuPrincipal extends JPanel {
        
     }
 
+    /**
+     * Metodo que configura el Jpanel dandole un tamaño una imagen y un fonde
+     */
+    
     private void configurarVentana() {
         this.setSize(720, 905);
         this.setLayout(null);
@@ -43,7 +54,11 @@ public class VistaMenuPrincipal extends JPanel {
         JLfondo.setBounds(0, -30, 700, 910);
         this.add(JLfondo);
     }
-
+    /**
+     * configurarBotonoes()
+     * Metodo que configura los botones que tiene esta clase con un tamaño
+     * una clase de letra, su texto y lo añade al Jpanel de esta clase.
+     */
     private void configurarBotonoes() {
         
         int alto= 60;
@@ -78,7 +93,12 @@ public class VistaMenuPrincipal extends JPanel {
     }
     
 
-    
+    /**
+     * crearActionJButton()
+     * creamos el controladorBotonesVista y le enviamos la logica
+     * y añadimos el actionListener a cada boton para que cuando pulsemos
+     * uno sepa cual es.
+     */
     private void crearActionJButton(){
         controladorBotonesVistas=new ControladorBotonesVistas(logica);
         JBjugar.addActionListener(controladorBotonesVistas);

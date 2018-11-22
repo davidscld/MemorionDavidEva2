@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 /**
  *
  * @author dvdsa
+ * 
+ * Clase que extiende de un Jpanel
  */
 public class VistaPartidasGuardadas extends JPanel {
 
@@ -30,6 +32,11 @@ public class VistaPartidasGuardadas extends JPanel {
     private Image imagenFondo = new ImageIcon(url).getImage();
     Font f = new Font("Cambria", Font.BOLD, 30);
 
+    /**
+     * VistaPartidasGuardadas(Logica logica)
+     *  
+     */
+    
     public VistaPartidasGuardadas(Logica logica) {
         this.logica = logica;
         configurarVentana();
@@ -39,6 +46,10 @@ public class VistaPartidasGuardadas extends JPanel {
 
     }
 
+    /**
+     * configurarVentana()
+     */
+    
     private void configurarVentana() {
         controladorPartidasGuardadas = new ControladorPartidasGuardadas(logica);
         this.setSize(720, 905);
@@ -48,7 +59,9 @@ public class VistaPartidasGuardadas extends JPanel {
         this.repaint();
 
     }
-
+    /**
+     * paint(Graphics g)
+     */
     public void paint(Graphics g) {
         g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
         this.setOpaque(false);

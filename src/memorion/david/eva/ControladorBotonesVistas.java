@@ -14,13 +14,26 @@ import javax.swing.JButton;
  * @author dvdsa
  */
 public class ControladorBotonesVistas implements ActionListener {
-Logica logica;
+    private Logica logica;
+
+    /**
+     * ControladorBotonesVistas(Logica logica)
+     * El controlador se crea en la vistaMEnuPrincipal y esta envia la logica.
+     */
+    
     public ControladorBotonesVistas(Logica logica) {
         this.logica = logica;
     }
 
   
-
+    /**
+     * public void actionPerformed(ActionEvent ae)
+     * te envia la opcion del menu que has pulsado 
+     * SE guarda el texto en un String y se crea un switch-casa para saber 
+     * cual es la opcion que se ha pulsado y llamar a el metodo correspondiente
+     * de la calse logica.
+     * Este metodo tiene casos de la VistaMenuPrincipal y de la VistaMenuDificultad.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         String opcion = ((JButton) ae.getSource()).getText();

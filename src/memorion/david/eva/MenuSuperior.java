@@ -19,13 +19,24 @@ public class MenuSuperior extends JMenuBar {
 
     private ControladorBotonesMenuSuperior controladorMenuSuperior;
     private Logica logica;
-
+    /**
+     * MenuSuperior(Logica logica)
+     * Constructor que se ejecuta cuando se crea la clase MenuSuperior en la 
+     * clase vista. Lo que hace es añadir un menu superior con unas opciones.
+     */
     public MenuSuperior(Logica logica) {
         this.logica = logica;
-
         crearMenu();
     }
-
+    /**
+     * crearMenu()
+     * Lo primero creamos el controladorBotonesMenuSuperior
+     * Se definen los JMenuItem del menu que seran las opciones qeu se mostraran
+     * Luego añadimos los escuchadores a los JMenuItem
+     * Despues le asignamos aceleraciones a las opciones de menu que deseemos
+     * Finalmente añadimos las opciones al JMenuBar que es la barra superior. Se 
+     * lo añadimos directamente a la clase porque esta extiende de un JMenuBsr
+     */
     public void crearMenu() {
         controladorMenuSuperior = new ControladorBotonesMenuSuperior(this.logica);
         //Definimos las opciones del menu
@@ -37,15 +48,13 @@ public class MenuSuperior extends JMenuBar {
         inicio.setHorizontalTextPosition(SwingConstants.CENTER);
         inicio.invalidate();
 
-        // se define una barra de menú
-        JMenuBar menuBar = new JMenuBar();
-
         //Añadimos escuchadores a los MEnuItem
         inicio.addActionListener(controladorMenuSuperior);
         nuevaPartida.addActionListener(controladorMenuSuperior);
         cargarPartida.addActionListener(controladorMenuSuperior);
         guardarPartida.addActionListener(controladorMenuSuperior);
         acercaDe.addActionListener(controladorMenuSuperior);
+        
         //Asignamos aceleradores de teclado
         KeyStroke atajoInicio = KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK);
         inicio.setAccelerator(atajoInicio);
