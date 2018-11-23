@@ -62,6 +62,10 @@ public class Partida extends JPanel {
 
     }
 
+    public void pararTiempo() {
+        tiempo.stop();
+    }
+
     private void crearPanelDeCartas() {
         panelDeCartas = new JPanel(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 5, 5));
         panelDeCartas.setOpaque(false);
