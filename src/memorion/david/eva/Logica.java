@@ -6,6 +6,7 @@
 package memorion.david.eva;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,8 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -43,7 +46,7 @@ public class Logica {
     private int posicion = 0, pulsaciones = 0, contador = 0, tiempoUsado;
     private String nombreGanador = "****";
     private Timer volteo, tiempo;
-
+    private JLabel huevo;
     /**
      * Logica() Cuando creamos la logica en el main se ejecuta directamente el
      * constructor. El constructor lo primero que va a hacer es llamar a los
@@ -491,7 +494,14 @@ public class Logica {
 //////////////////////////////METODOS NO AGRUPABLES///////////////
 
     public void huevoDePascua() {
-
+        huevo = new JLabel();
+        ImageIcon bimo = new ImageIcon(this.getClass().getResource("/assets/huevoPascua.gif"));
+        Icon icono = new ImageIcon(bimo.getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+        huevo.setIcon(icono);
+        huevo.setBounds(20, 50, 250, 250);
+        vistaJuegoCartas.add(huevo);
+        vistaJuegoCartas.repaint();
+        
     }
 
 }
