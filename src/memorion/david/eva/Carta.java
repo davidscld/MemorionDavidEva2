@@ -22,7 +22,13 @@ public class Carta extends JLabel {
     private boolean emparejada, levantada;
     private ControladorJuegoCartas controladorJuegoCartas;
     private Logica logica;
-
+    /**
+     * Constructor carta que se crea en la logica cuando creamos el arrayList
+     * de cartas y nos envia una ruta y la logica.
+     * Tiene un id autonumerico para saber que carta es. Y ponemos emparejadas 
+     * y levantada a false porque cuando creamos las cartas todas estan dada la
+     * vuelta. Luego guardamos la logica y llamamos a l metodo asignarControlador
+     */
     public Carta(URL rutaAnverso,Logica logica) {
         n++;
         id = n;
@@ -56,12 +62,20 @@ public class Carta extends JLabel {
     public URL getRutaAnverso() {
         return rutaAnverso;
     }
-
+    /**
+     * asignarControlador()
+     * Creamos el controladosJuegoCartas y le envio la logica que hemos guardado
+     * en el constructor y le ponemos el escuchador.
+     */
     private void asignarControlador() {
         controladorJuegoCartas = new ControladorJuegoCartas(logica);
         this.addMouseListener(controladorJuegoCartas);
 
     }
+    /**
+     * ponerRerverso(
+     * Meto que pone el reverso a todas las cartas 
+     */
     public void ponerRerverso() {
         this.rutaReverso = getClass().getResource("/assets/reverso.jpg");
         imagenCarta = new ImageIcon(rutaReverso);

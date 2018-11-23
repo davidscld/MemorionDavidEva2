@@ -15,7 +15,12 @@ public class Jugador {
 
     private String nombre;
     private int numeroMovimientos, tiempoUsado;
-
+    /**
+     * Jugador(String nombre, int numeroMovimientos, int tiempoUsado)
+     * Constructor de  jugador que lo llama desde la logica cuando ha acabado
+     * una partida. Nos mandan el string del nombre el numero de movimientos 
+     * y el tiempo usado
+     */
     public Jugador(String nombre, int numeroMovimientos, int tiempoUsado) {
         this.nombre = nombre;
         this.numeroMovimientos = numeroMovimientos;

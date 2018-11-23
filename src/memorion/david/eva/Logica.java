@@ -327,6 +327,7 @@ public class Logica {
                 }
             }
             if (todasEmparejadas) {
+                tiempo.stop();
                 guardarGanador();
             }
         } else {//En el caso de que este acabando una partida que haya cargado que estuviera guardada
@@ -336,6 +337,7 @@ public class Logica {
                 }
             }
             if (todasEmparejadas) {
+                tiempo.stop();
                 guardarGanador();
             }
         }

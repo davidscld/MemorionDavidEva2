@@ -58,7 +58,6 @@ public class Partida extends JPanel {
         crearPanelContadores();
         crearPanelDeCartas();
         configurarPanel();
-       
         configurarHuevoPascua();
 
     }
