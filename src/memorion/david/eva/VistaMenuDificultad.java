@@ -92,17 +92,6 @@ public class VistaMenuDificultad extends JPanel {
         //Metodo que asigna los action
         crearActionJButton();
     }
-    /**
-     * NO SE UTILIZA
-     */
-    private void configurarTitulo() {
-        //Crear titulo
-        LBtitulo = new Label("Level", Label.CENTER);
-        LBtitulo.setFont(new Font("Cambria", Font.ITALIC, 45));
-        LBtitulo.setBounds(240, 150, 200, 100);
-        LBtitulo.setBackground(null);
-        this.add(LBtitulo);
-    }
     
     /**
      * crearActionJButton()

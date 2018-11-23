@@ -448,24 +448,7 @@ public class Logica {
 
         abrirPartidaEmpezada(partidaEscogida);
     }
-    /**
-     * NO SE UTILIZA EN EL PROGRAMA
-     */
-    public void eliminarPartidaGuardada() {
-        existe = false;
-        if (!ArrayPartidasGuardadas.isEmpty()) {
-            for (int i = 0; i < ArrayPartidasGuardadas.size(); i++) {
-                if (ArrayPartidasGuardadas.get(i).equals(this.partida)) {
-                    posicion = i;
-                    existe = true;
-                }
-            }
-        }
-        if (existe) {
-            ArrayPartidasGuardadas.remove(posicion);
-        }
-    }
-
+    
     public void guardarGanador() {
         this.nombreGanador = JOptionPane.showInputDialog("Escribe tu nombre");//Recojo el nombre del ganador con un JOptioPanel
 
