@@ -261,7 +261,12 @@ public class Logica {
         return ArrayPartidasGuardadas;
     }
 //////////////////////////METODOS CARTAS////////////////////////////////////
-
+    /**
+     * voltearCarta(Carta carta)
+     * Metodo que tiene un timer que se va a ejecutar cuando se pulse una carta
+     * para darla la vuelta y antes de darla la vuelta va a mostrar medio segundo
+     * un gif de carga.
+     */
     public void voltearCarta(Carta carta) {
         contador = 0;
         tiempoUsado = 500;
@@ -361,7 +366,8 @@ public class Logica {
     }
 
     /**
-     * voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) Metodo que se
+     * voltearAlReves(Carta primeraPulsada, Carta segundaPulsada) 
+     * Metodo que se
      * llama desde comprobarParejas cuando se ha comprobado que las dos cartas
      * que se han levantado no son pareja. Es un timer que dura 2 segundos y lo
      * que hace es llamar al metodo ponerReverso para que vuelva a dar la vuelta
@@ -385,7 +391,8 @@ public class Logica {
 
 ///////////////////METODOS RELACIONADOS A LAS PARTIDAS///////////////////////////////////
     /**
-     * contadorPulsaciones() Es un contador que se le llama desde la clase
+     * contadorPulsaciones() 
+     * Es un contador que se le llama desde la clase
      * ContadosJuegoCartas() cuando vamos pulsando las cartas. El sontados suma
      * 1 y comprueba si es una partida nueva o una partida guardada y se lo
      * manda a el setNumero de movimientos que esta en la clase partida
@@ -401,7 +408,8 @@ public class Logica {
     }
 
     /**
-     * guardarPartida() Tenemos que comprobar si la partida que gusardamos es
+     * guardarPartida() 
+     * Tenemos que comprobar si la partida que gusardamos es
      * una nueva o una partida que ya estaba guardada. Si es una partida nueva
      * tengo que comprobar si la habia guardado antes o no para saber si tengo
      * que borrar alguna partida del arrylist de partidas guardada y cual es la
@@ -464,7 +472,14 @@ public class Logica {
 
         abrirPartidaEmpezada(partidaEscogida);
     }
-
+    /**
+     * guardarGanador()
+     * Guarda el nombre del jugador que le escriba en un cuadro de dialogo que
+     * le va a salir cuando termine la partida. Comprobara si es una partida
+     * nueva o una partida guardada y lo que hara sera crear un nuevo jugador, 
+     * añadirlo a el arrayList de Jugador. Luego abrira directamente el ranking 
+     * de jugadores.
+     */
     public void guardarGanador() {
         this.nombreGanador = JOptionPane.showInputDialog("Escribe tu nombre");//Recojo el nombre del ganador con un JOptioPanel
 
@@ -481,12 +496,9 @@ public class Logica {
 
     }
 
-    public void ordenarArrayListGanadores() {
-
-    }
-
     /**
-     * resetearEstadisticas() Metodo que resetea el juego entero.
+     * resetearEstadisticas() 
+     * Metodo que resetea el juego entero.
      */
     public void resetearEstadisticas() {
 
@@ -494,7 +506,11 @@ public class Logica {
         ArrayListJugador.clear();
     }
 //////////////////////////////METODOS NO AGRUPABLES///////////////
-
+    /**
+     * huevoDePascua()
+     * Crea un JLabel en el que se le va a añadir una imagen con un tamaño y se 
+     * le va a enviar a la vista de Juego cartas para que lo muestre.
+     */
     public void huevoDePascua() {
         huevo = new JLabel();
         ImageIcon bimo = new ImageIcon(this.getClass().getResource("/assets/huevoPascua.gif"));

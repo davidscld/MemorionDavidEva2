@@ -20,6 +20,8 @@ import javax.swing.Timer;
 /**
  *
  * @author dvdsa
+ * 
+ * Clase que extiende de Jpanel
  */
 public class Partida extends JPanel {
 
@@ -43,7 +45,19 @@ public class Partida extends JPanel {
     private boolean partidaGuardada = false;
     private int cantidadCartas;
     private ControladorHuevoPascua controladorHuevoPascua;
-
+    
+    /**
+     *  Partida(String dificultad, Logica logica)
+     * Constructor que se ejecuta cuando se crea la partida en la clase logica 
+     * y te envia Un string con la dificultad que ha ekegido y la logica.
+     * La partida tiene un identificador llamado numeroDePartida que es autonumerico
+     * guarda la logica que le hemos enviado, pone el fondo en opaco, guarga la 
+     * dificultad que se le ha enviado. La partida tambien tiene un nombre que
+     * ira tanbien con el numerodePartida. Ponemos el Layaout a null. 
+     * El constructor llama a los metodos calcularDistribucion(), 
+     * crearContadorTiempo(), crearPanelContadores(), crearPanelDeCartas(), 
+     * configurarPanel() y configurarHuevoPascua().
+     */
     public Partida(String dificultad, Logica logica) {
         n++;
         numeroDePartida = n;
@@ -59,20 +73,42 @@ public class Partida extends JPanel {
         crearPanelDeCartas();
         configurarPanel();
         configurarHuevoPascua();
-
     }
-
+    
+    /**
+     * pararTiempo()
+     * Metodo que para el timer del tiempo y se llama cuando todas las cartas
+     * estan emparejadas
+     */
     public void pararTiempo() {
         tiempo.stop();
     }
 
+    /**
+     * crearPanelDeCartas()
+     * Crea un panel para meter las cartas en el que se le dira el numero de 
+     * cartasAnco y el numero de cartasLargo. Ponemos el panel opaco, le damos 
+     * un tamaño a ese panel y se lo añadimos a la clase ya que esta es tambien un 
+     * JPanel
+     */
     private void crearPanelDeCartas() {
         panelDeCartas = new JPanel(new GridLayout(this.numeroCartasAncho, this.numeroCartasLargo, 5, 5));
         panelDeCartas.setOpaque(false);
         panelDeCartas.setBounds(70, 70, 850, 800);
         this.add(panelDeCartas);
     }
-
+    
+    /**
+     * crearPanelContadores()
+     * Lo primero de damos un formato para la letra de los JLabel.
+     * Creamos un JPanel de contadores en el que le vamos a añarid el contador
+     * de las pulsaciones que realiza sobre las cartas y el tiempo que lleva 
+     * jugando.
+     * Creamos un JPanel para el contador de las pulsaciones y otro para los 
+     * minutos y segundos que lleva jugando. Estos JLabel se los añadimos al
+     * JpanelDeContadores y este Jpanel a la clase que tambien es un JPanel.
+     * A el JPanel de contadores le damos un tamalo  y una posicion.
+     */
     private void crearPanelContadores() {
         Font f = new Font("Cambria", Font.ITALIC, 30);
 
@@ -105,7 +141,15 @@ public class Partida extends JPanel {
     public void setPartidaGuardada(boolean partidaGuardada) {
         this.partidaGuardada = partidaGuardada;
     }
-
+    /**
+     * calcularDistribucion()
+     * La distribucion la calculamos segun la dificultad que se haya elegido
+     * que la tenemos guardada en un String llamado dificultad que se ha pasado 
+     * en el constructor por parametro.
+     * Dependiendo de la dificultad el juego tendra un numero de cartas y 
+     * un tamaño para que entren todas las cartas.
+     * 
+     */
     private void calcularDistribucion() {
 
         if (this.dificultad.equals("Low")) {
@@ -130,7 +174,17 @@ public class Partida extends JPanel {
     public int getCantidadCartas() {
         return cantidadCartas;
     }
-
+    /**
+     * configurarPanel()
+     * Tenemos un for que recorre el numero de veces que cartas queramos coger
+     * y las va añadiendo a el ArrayList de CartasSeleccionadas.Cuando coge una 
+     * carta del earray de cartasPar la guarda en una variable carta para luego 
+     * buscarla con un for en el array de cartasImpar y tener asi su pareja.
+     * cuando ya ha guardado todas las cartas en el arrayList lo desordena para 
+     * que no salgan seguidas.
+     * Despues recorre el arrayList de las cartas que se han selecionado y las 
+     * va añadiendo al panelDeCartas.
+     */
     private void configurarPanel() {
 
         for (int i = 0; i < ((numeroCartasAncho * numeroCartasLargo) / 2); i++) {
@@ -155,13 +209,25 @@ public class Partida extends JPanel {
     public String getNombrePartida() {
         return nombrePartida;
     }
-
+    /**
+     * JLabeltiempo()
+     * Es un metodo que retorna un JLabel en el que se guardara el tiempo.
+     * llame al metodo CrearContadorTiempo que tiene un timer, da tamaño al JLabel
+     * y lo retorna.
+     */
     public JLabel JLabeltiempo() {
         crearContadorTiempo();
         JLcontador.setBounds(700, 50, 40, 70);
         return JLcontador;
     }
-
+    /**
+     * crearContadorTiempo()
+     * Metod que contiene un timer que se va ejecurtando cada segundo sumando un
+     * segundo y si son 59 segundos suma un minuto y pone los segundos a 00.
+     * cada verz que sume un segundo cambiamos el tento del JLcontador para 
+     * que nos vaya cambiando el tiempo en el programa y para mostrarlo lo 
+     * repintamos.
+     */
     public void crearContadorTiempo() {
         this.tiempo = new Timer(1000, new ActionListener() {
             @Override
@@ -197,7 +263,11 @@ public class Partida extends JPanel {
         this.tiempoTotalUsado = this.minutos * 60 + this.segundos;
         return tiempoTotalUsado;
     }
-
+    /**
+     * configurarHuevoPascua()
+     * Crea un controlador para el huvo de pascua y hace el acelerador para que
+     * vala a ese controlador.
+     */
     private void configurarHuevoPascua() {
         controladorHuevoPascua = new ControladorHuevoPascua(logica);
         JLpulsaciones.addMouseListener(controladorHuevoPascua);

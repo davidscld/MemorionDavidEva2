@@ -18,11 +18,18 @@ public class ControladorHuevoPascua extends MouseAdapter {
 
     private Logica logica;
     private static int contador = 0;
-
+    /**
+     * Consttructor que se ejecuta cuando se crea el controlador en la clase 
+     * partida y se le encvia la logica.
+     */
     public ControladorHuevoPascua(Logica logica) {
         this.logica = logica;
     }
-
+    /**
+     * void mouseClicked(MouseEvent me)
+     * Cuando se hace clic 6 veces llama a al metodo huevodePascua que se 
+     * encuentra en la logica
+     */
     @Override
     public void mouseClicked(MouseEvent me) {
 
