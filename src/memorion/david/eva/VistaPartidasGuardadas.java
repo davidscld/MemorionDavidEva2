@@ -34,7 +34,10 @@ public class VistaPartidasGuardadas extends JPanel {
 
     /**
      * VistaPartidasGuardadas(Logica logica)
-     *  
+     * Constructor que se ejecuta en la logica cuando creamos la clase 
+     * VistaPartidasGuardadas y nos envia la logica.
+     * Luego llama al metodo configurarVentana() y pone las comunas a 1 y 
+     * las filas a 12.
      */
     
     public VistaPartidasGuardadas(Logica logica) {
@@ -48,6 +51,11 @@ public class VistaPartidasGuardadas extends JPanel {
 
     /**
      * configurarVentana()
+     * Crea la clase del controladosPartidas guardadas y le envia la logica
+     * da un tamaño a la clase que es un JPanel, pone el layaout a null para que
+     * nosotros le posicionemos todos los elementos.
+     * Luego llama a configurarPanelCentral(), mostrarPartidas(); y 
+     * repinta el jPanel
      */
     
     private void configurarVentana() {
@@ -61,13 +69,19 @@ public class VistaPartidasGuardadas extends JPanel {
     }
     /**
      * paint(Graphics g)
+     * Metodo que se utiliza para poner la imagen de fondo dandole un tamaño
      */
     public void paint(Graphics g) {
         g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
         this.setOpaque(false);
         super.paint(g);
     }
-
+    /**
+     * mostrarPartidas()
+     * comprobamos si el arraylist de partidasguardadas esta vacio o no y si no 
+     * esta vacio recorremos el arraylist de Partidas guardadas y vamos pintando
+     * en Jlabel las partidas que tenemos guardadas.
+     */
     public void mostrarPartidas() {
         if (!logica.getArrayPartidasGuardadas().isEmpty()) {
            
@@ -75,14 +89,20 @@ public class VistaPartidasGuardadas extends JPanel {
                 JLabel JLpartida = new JLabel(it.getNombrePartida());
                 JLpartida.setFont(f);
                 JLpartida.addMouseListener(controladorPartidasGuardadas);
-                panelCentral.repaint();
                 panelCentral.add(JLpartida);
+                panelCentral.repaint();
                 
             }
 
         }
     }
-
+    /**
+     * configurarPanelCentral()
+     * Metodo que añade un Jpanel central en el que le doy un tamaño y las 
+     * coordenadas donde debe ir situado este panel que es el que va a llevar
+     * los JLabel de las partidas guardada que hay y se le añado a la clase ya que
+     * es un JPanel.
+     */
     private void configurarPanelCentral() {
         panelCentral = new JPanel();
         panelCentral.setLayout(new GridLayout(12, 0, 10, 10));
